@@ -1,1 +1,156 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&family=Lora&display=swap'); */
 @import "tailwindcss";
+
+@layer utilities {
+  .font-content {
+    font-family: 'Lora', serif;
+  }
+  .font-title {
+    font-family: 'Viaoda Libre', cursive; /* Viaoda Libre is typically categorized as a cursive or display font */
+  }
+}
+
+:root {
+  /* Primary Colors */
+  --primary-dark: #2B1D16;   /* Dark Brown - for text and headings */
+  --primary-light: #F2DAC5;  /* Light Peach - for backgrounds */
+  
+  /* Secondary Colors */
+  --secondary-1: #8C6E4F;    /* Brown - for accents and buttons */
+  --secondary-2: #4886D7;    /* Cornflower Blue - for call-to-actions and links */
+  
+  /* Accent Colors */
+  --accent-1: #8A423F;       /* Burgundy - for highlights and special elements */
+  --accent-2: #C2B3D9;       /* Lavender - for subtle accents and backgrounds */
+  
+  /* Neutral Colors */
+  --neutral-dark: #65523D;   /* Medium Brown - for secondary text */
+  --neutral-light: #D3BFA7;  /* Pale Beige - for subtle backgrounds and borders */
+  
+  /* Additional Color */
+  --highlight: #FFD700;      /* Gold - for important highlights or notifications */
+}
+
+/* Custom Color Palette - Tailwind-Safe */
+.bg-clr-tan-desert {
+  background-color: #B8976B;
+}
+
+.text-clr-tan-desert {
+  color: #B8976B;
+}
+
+.bg-clr-ebony-night {
+  background-color: #2B1D16;
+}
+
+.bg-clr-ebony-night-lighter {
+  background-color: #2B1D16aa;
+}
+
+.text-clr-ebony-night {
+  color: #2B1D16;
+}
+
+.bg-clr-coffee-bean {
+  background-color: #65523D;
+}
+
+.text-clr-coffee-bean {
+  color: #65523D;
+}
+
+.bg-clr-peach-puff {
+  background-color: #F2DAC5;
+}
+
+.text-clr-peach-puff {
+  color: #F2DAC5;
+}
+
+.bg-clr-parchment-paper {
+  background-color: #D3BFA7;
+}
+
+.text-clr-parchment-paper {
+  color: #D3BFA7;
+}
+
+.bg-clr-sienna-earth {
+  background-color: #8C6E4F;
+}
+
+.text-clr-sienna-earth {
+  color: #8C6E4F;
+}
+
+.bg-clr-wisteria-whisper {
+  background-color: #C2B3D9;
+}
+
+.text-clr-wisteria-whisper {
+  color: #C2B3D9;
+}
+
+.bg-clr-rust-canyon {
+  background-color: #8A423F;
+}
+
+.text-clr-rust-canyon {
+  color: #8A423F;
+}
+
+.bg-clr-azure-sky {
+  background-color: #4886D7;
+}
+
+.text-clr-azure-sky {
+  color: #4886D7;
+}
+
+.high-contrast-text {
+  /* color: white; */
+  text-shadow: 
+    0 0 3px #000,
+    -2px -2px 15px #000,
+    2px -2px 13px #000,
+    -2px 2px 12px #000,
+    0 2px 3px #000,
+    2px 0 7px #000,
+    0 -2px 18px #000,
+    -2px 0 5px #000,
+    1px 1px 8px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(0, 0, 0, 1),
+    0 0 20px rgba(0, 0, 0, 1),
+    0 0 10px rgba(0, 0, 0, 1),
+    0 0 15px rgba(0, 0, 0, 1),
+    1px 1px 8px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(0, 0, 0, 1),
+    0 0 20px rgba(0, 0, 0, 1),
+    0 0 10px rgba(0, 0, 0, 1),
+    0 0 15px rgba(0, 0, 0, 1),
+    1px 1px 8px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(0, 0, 0, 1),
+    0 0 20px rgba(0, 0, 0, 1),
+    0 0 10px rgba(0, 0, 0, 1),
+    0 0 15px rgba(0, 0, 0, 1),
+    0 0 15px rgba(255, 255, 255, 1),
+    0 0 15px rgba(255, 255, 255, 1),
+    0 0 15px rgba(255, 255, 255, 1),
+    0 0 15px rgba(255, 255, 255, 1),
+    0 0 15px rgba(255, 255, 255, 1);
+}
+
+.high-contrast-obj {
+  box-shadow:
+    0 0 3px #000,
+    /* -2px -2px 15px #000, */
+    2px -2px 13px #000,
+    /* -2px 2px 12px #000, */
+    0 2px 3px #000,
+    /* 2px 0 7px #000, */
+    0 -2px 18px #000,
+    /* -2px 0 5px #000, */
+    1px 1px 8px rgba(0, 0, 0, 0.9),
+    0 0 15px rgba(255, 255, 255, 1);
+}
