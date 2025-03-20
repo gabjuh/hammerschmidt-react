@@ -10,7 +10,7 @@ const Banner = () => {
         <h2 className="text-2xl sm:text-xl md:text-4xl font-title mb-3 high-contrast-text ">Projekt</h2>
         <h1 className="text-4xl md:text-6xl font-title drop-shadow-lg text-orange-300 high-contrast-text">Musica Hammerschmidtalis</h1>
         <h2 className="text-xl sm:text-lg md:text-2xl mt-3 font-title drop-shadow-lg high-contrast-text">Lorem ipsum dolor sit amet.</h2>
-        <p className="text-lg sm:text-base md:text-xl mt-5 max-w-[90%] md:max-w-[70%] drop-shadow-lg mx-auto high-contrast-text">
+        <p className="text-lg sm:text-base md:text-xl mt-5 max-w-[90%] md:max-w-[70%] drop-shadow-lg mx-auto high-contrast-text text-justify md:text-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. A repellat itaque accusamus, quam inventore laboriosam est molestiae architecto, consequuntur, quos officiis doloribus cumque aut necessitatibus qui possimus! Quae, voluptas modi!
         </p>
         <div className="mt-3">

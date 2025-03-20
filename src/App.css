@@ -2,13 +2,26 @@
 @import "tailwindcss";
 
 @layer utilities {
-  .font-content {
-    font-family: 'Lora', serif;
-  }
   .font-title {
     font-family: 'Viaoda Libre', cursive; /* Viaoda Libre is typically categorized as a cursive or display font */
   }
+  .font-content {
+    font-family: 'Roboto Flex', sans-serif;
+  }
+
+  /* Font Weights */
+  .font-content-thin { font-weight: 100; }
+  .font-content-extralight { font-weight: 200; }
+  .font-content-light { font-weight: 300; }
+  .font-content-regular { font-weight: 400; }
+  .font-content-medium { font-weight: 500; }
+  .font-content-semibold { font-weight: 600; }
+  .font-content-bold { font-weight: 700; }
+  .font-content-extrabold { font-weight: 800; }
+  .font-content-black { font-weight: 900; }
 }
+
+/*  <!-- #7D817F #54372A #A89F89 #8F9394--> */
 
 :root {
   /* Primary Colors */
@@ -29,6 +42,10 @@
   
   /* Additional Color */
   --highlight: #FFD700;      /* Gold - for important highlights or notifications */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Custom Color Palette - Tailwind-Safe */
@@ -153,4 +170,49 @@
     /* -2px 0 5px #000, */
     1px 1px 8px rgba(0, 0, 0, 0.9),
     0 0 15px rgba(255, 255, 255, 1);
+}
+
+@media screen and (max-width: 1535px) {
+  .musician-card-name {
+    @apply text-5xl;
+  }
+}
+
+@media screen and (min-width: 1536px) and (max-width: 1920px) {
+  .musician-card-name {
+    @apply text-4xl;
+  }
+}
+
+@media screen and (min-width: 1921px) {
+  .musician-card-name {
+    @apply text-5xl;
+  }
+}
+
+.musician-bio p {
+  @apply mt-2;
+}
+
+.musician-bio strong {
+  font-weight: 700;
+}
+
+.musician-bio a,
+#privacy-policy a {
+  font-weight: 700;
+  @apply text-orange-300;
+}
+
+#privacy-policy li {
+  list-style-type: disc;
+  margin-left: 2rem;
+}
+
+#privacy-policy p {
+  margin: 10px;
+}
+
+strong {
+  font-weight: 700;
 }

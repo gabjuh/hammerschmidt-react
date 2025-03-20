@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import HamburgerIcon from '../assets/svg/hamburger-icon';
 import { menuData } from '../data/menu-data';
@@ -9,8 +10,9 @@ const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const location = useLocation();
 
-  // Handle clicks outside the menu
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -29,7 +31,7 @@ const Nav = () => {
     };
   }, []);
 
-  // Handle ESC key press
+  // Close dropdown on ESC key
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -47,30 +49,54 @@ const Nav = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
+  // Smooth scroll for hash links
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
+
   return (
-    <nav className="sticky top-0 bg-[#fff1] z-50 shadow-lg backdrop-filter backdrop-blur-xl">
+    <nav className="sticky top-0 bg-[#fff1] z-50 shadow-lg backdrop-filter backdrop-blur-xl h-[83px]">
       {/* Desktop */}
       <div className="container relative mx-auto flex py-6">
         {/* Logo */}
         <div className="grow w-[350px] px-5">
-          <a href="/" className="font-title text-white text-xl mt-2 lg:text-sm lg:mt-2 xl:text-2xl xl:mt-1 2xl:text-3xl">
-            <span className="opacity-60">Musica</span> Hammerschmidt<span className="opacity-60">alis</span>
-          </a>
+          <Link
+            to="/"
+            className="inline-block font-title text-white text-2xl mt-[3px] lg:text-md lg:mt-[2px] xl:text-2xl  2xl:text-3xl"
+          >
+            <span className="opacity-60">Musica</span> Hammerschmidt
+            <span className="opacity-60">alis</span>
+          </Link>
         </div>
 
         {/* Menu Desktop */}
         <div className="flex-grow absolute right-0 lg:visible invisible font-title text-xl tracking-[1px] top-[22px]">
           <ul className="flex justify-center">
-            {menuData.map((item, index) => (
-              <MenuItem text={item.text} link={item.link} key={index} classes={item.isHighlighted ? '!text-orange-300' : ''} />
-            ))}
+            {menuData.map((item, index) =>
+              item.link.startsWith("#") ? (
+                // Use 'a' tag for hash links (smooth scrolling)
+                <li key={index} className={`px-4 ${item.isHighlighted ? "!text-orange-300" : ""}`}>
+                  <Link to={item.link} className="hover:opacity-75 transition">
+                    {item.text}
+                  </Link>
+                </li>
+              ) : (
+                // Use 'Link' for internal navigation
+                <MenuItem text={item.text} link={item.link} key={index} classes={item.isHighlighted ? "!text-orange-300" : ""} />
+              )
+            )}
           </ul>
         </div>
 
         {/* Menu Mobile */}
         <button
           ref={buttonRef}
-          className="w-[35px] visible lg:invisible cursor-pointer"
+          className="w-[35px] visible lg:invisible cursor-pointer translate-x-[-17px]"
           onClick={handleMenuClick}
         >
           <HamburgerIcon w="30" h="30" />
@@ -78,16 +104,27 @@ const Nav = () => {
 
         {isDropdownOpen && (
           <div ref={menuRef}>
-            <ul id="dropdown-menu" className="absolute right-0 top-24 bg-[#fff1] rounded-lg w-[300px] py-5 px-7 backdrop-filter backdrop-blur-xl text-center">
-              {menuData.map((item, index) => (
-                <DropdownItem
-                  text={item.text}
-                  link={item.link}
-                  key={index}
-                  classes={item.isHighlighted ? 'bg-orange-300 rounded-full !text-white' : ''}
-                  handleClick={handleMenuClick}
-                />
-              ))}
+            <ul
+              id="dropdown-menu"
+              className="absolute right-0 top-24 bg-[#fff1] rounded-lg w-[300px] py-5 px-7 backdrop-filter backdrop-blur-xl text-center"
+            >
+              {menuData.map((item, index) =>
+                item.link.startsWith("#") ? (
+                  <li key={index}>
+                    <Link to={item.link} onClick={handleMenuClick} className="block py-2 hover:opacity-75 transition">
+                      {item.text}
+                    </Link>
+                  </li>
+                ) : (
+                  <DropdownItem
+                    text={item.text}
+                    link={item.link}
+                    key={index}
+                    classes={item.isHighlighted ? "bg-orange-300 rounded-full !text-white" : ""}
+                    handleClick={handleMenuClick}
+                  />
+                )
+              )}
             </ul>
           </div>
         )}
