@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { AnchorHTMLAttributes, FC, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Link, useParams } from 'react-router-dom';
 import rehypeRaw from 'rehype-raw';
@@ -9,9 +9,13 @@ import YoutubeIcon from '../assets/svg/youtube-icon';
 import { musiciansData } from '../data/musicians-data';
 import { slugify } from '../utils/slugify';
 
-function LinkRenderer(props) {
-  return <a href={props.href} target="_blank" rel="noreferrer">{props.children}</a>;
-}
+const LinkRenderer: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href, children, ...props }) => {
+  return (
+    <a href={href} target="_blank" rel="noreferrer" {...props}>
+      {children}
+    </a>
+  );
+};
 
 const MusicianPortfolio = () => {
   const { name } = useParams<{ name: string }>(); 

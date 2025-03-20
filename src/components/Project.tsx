@@ -16,7 +16,7 @@ const Project = () => {
 
         {/* Image (Right on Desktop, Above on Mobile) */}
         <div className="w-full lg:w-1/2 flex justify-center mb-8 md:mb-0 mt-10 lg:mt-0">
-          <img className="w-full max-w-[400px] md:max-w-[450px] rounded-xl shadow-lg" src="src/assets/img/hammerschmidt.png" alt="Hammerschmidt Image" />
+          <img className="w-full max-w-[400px] md:max-w-[450px] rounded-xl shadow-lg" src="public/img/hammerschmidt.png" alt="Hammerschmidt Image" />
         </div>
       </div>
     </div>

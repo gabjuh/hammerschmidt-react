@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Banner from '../components/Banner';
 import Concerts from '../components/Concerts';
 // import ContactForm from '../components/ContactForm';

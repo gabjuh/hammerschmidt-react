@@ -1,6 +1,6 @@
 const Banner = () => {
   return (
-    <div id="banner" className="mx-auto bg-cover bg-bottom bg-no-repeat h-auto" style={{backgroundImage: 'url("src/assets/img/stage.png")'}}>
+    <div id="banner" className="mx-auto bg-cover bg-bottom bg-no-repeat h-auto" style={{backgroundImage: `url("/public/img/stage.png")`}}>
   {/* style="background-image: url('src/img/noten.png');" */}
   {/* <div class="absolute h-[400px] w-full bottom-0 bg-gradient-to-b from-transparent to-white"></div> */}
   <div>
