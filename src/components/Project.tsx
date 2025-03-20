@@ -4,12 +4,12 @@ const Project = () => {
       <div className="w-full bg-[#fff1] p-8 rounded-lg shadow-lg flex flex-wrap lg:flex-nowrap gap-6 relative">
         {/* Text Block (Left on Desktop, Below Image on Mobile) */}
         <div className="w-full lg:w-1/2 text-center lg:text-right md:pr-10">
-          <span className="text-lg block">A szerző</span>
-          <h2 className="font-title text-4xl sm:text-5xl my-5 text-orange-300 drop-shadow-lg">Andreas Hammerschmidt</h2>
-          <h3 className="text-xl sm:text-2xl mb-5 mt-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, vel!
+          <p className="text-2xl font-title">A szerző</p>
+          <h2 className="font-title text-5xl sm:text-5xl my-5 text-orange-300 drop-shadow-lg">Andreas Hammerschmidt</h2>
+          <h3 className="text-3xl font-title sm:text-2xl mb-5 mt-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h3>
-          <p className="font-extralight text-sm sm:text-base">
+          <p className="font-content-extralight text-sm sm:text-base">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus rem sequi, facilis quos repellat culpa dicta, iusto nam quae nesciunt expedita dolores in dolorem veritatis totam, obcaecati deleniti porro quidem?
           </p>
         </div>
