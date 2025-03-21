@@ -3,7 +3,7 @@ import PageTitle from '../components/PageTitle';
 
 const AdvertStuff = () => {
   return (
-    <PageContentWrapper>
+    <PageContentWrapper backTo="/#footer">
       <PageTitle text="Plakátok, szóróanyagok" />
       Hamarosan...
     </PageContentWrapper>

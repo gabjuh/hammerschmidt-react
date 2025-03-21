@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import projectImage from '../assets/img/hammerschmidt.png';
 
 const Project = () => {
@@ -14,6 +16,11 @@ const Project = () => {
           <p className="font-content-extralight sm:text-base leading-6">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus rem sequi, facilis quos repellat culpa dicta, iusto nam quae nesciunt expedita dolores in dolorem veritatis totam, obcaecati deleniti porro quidem?
           </p>
+
+          <Link to="/koncertprogram" className="inline-block font-content-medium mt-5 px-7 py-2 rounded-full bg-[#A14028] shadow-lg text-white font-bold hover:bg-[#A14028] transition duration-200">
+            Koncertprogram
+          </Link>
+
         </div>
 
         {/* Image (Right on Desktop, Above on Mobile) */}

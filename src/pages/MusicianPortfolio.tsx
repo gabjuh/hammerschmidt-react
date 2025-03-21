@@ -1,12 +1,12 @@
 import { AnchorHTMLAttributes, FC, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import rehypeRaw from 'rehype-raw';
 
-import ArrowGoBackIcon from '../assets/svg/arrow-go-back-icon';
 import FacebookIcon from '../assets/svg/facebook-icon';
 import WebsiteIcon from '../assets/svg/website-icon';
 import YoutubeIcon from '../assets/svg/youtube-icon';
+import BackLink from '../components/BackLink';
 import Hr from '../components/Hr';
 import { musiciansData } from '../data/musicians-data';
 import { slugify } from '../utils/slugify';
@@ -99,9 +99,6 @@ const MusicianPortfolio = () => {
           </h2>
 
           <Hr />
-          {/* <h3 className="text-[1.3rem] text-gray-300 my-4 text-center md:text-left italic">
-            {musician.title}
-          </h3> */}
 
           {/* Markdown Bio */}
           <div className="musician-bio text-white mb-4 hyphens-auto prose prose-invert leading-7 text-center md:text-left">
@@ -110,14 +107,12 @@ const MusicianPortfolio = () => {
             </ReactMarkdown>
           </div>
 
-          {/* <hr className="border-orange-300 translate-y-[-5px]" /> */}
-          
-
         </div>
         {/* Back Link */}
-        <Link to={`/#${name}`} className="text-center absolute bottom-3 right-3  block mt-6 opacity-80 hover:opacity-100 text-orange-300 hover:text-orange-400 transition-all ease-in-out duration-300 scale-y-[-1]">
+        {/* <Link to={`/#${name}`} className="text-center absolute bottom-3 right-3  block mt-6 opacity-80 hover:opacity-100 text-orange-300 hover:text-orange-400 transition-all ease-in-out duration-300 scale-y-[-1]">
           <ArrowGoBackIcon h="25" w="25"/>
-        </Link>
+        </Link> */}
+        <BackLink target={`/#${name}`} />
       </div>
     </div>
   );
