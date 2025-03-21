@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
+import TextIcon from '../assets/svg/text-icon';
 import { slugify } from '../utils/slugify';
 
 const Person = ({
@@ -73,10 +74,10 @@ const Person = ({
           {/* Musician Details */}
           <motion.div
             ref={detailsRef}
-            className="absolute musician-details w-full left-0 bottom-0 text-center bg-[#cabfab89] text-4xl pt-4.5 text-[#666] cursor-pointer backdrop-filter backdrop-blur-md overflow-hidden"
+            className="absolute musician-details w-full left-0 bottom-0 text-center bg-[#cabfab89] text-4xl text-[#666] cursor-pointer backdrop-filter backdrop-blur-md overflow-hidden"
             animate={{ height: isOpen ? 542 : 90 }}
             initial={false} // Prevents animations from triggering on load
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
             onClick={toggleDetails}
             style={{
               position: "absolute", // Prevents layout shifts
@@ -85,34 +86,51 @@ const Person = ({
             }}
           >
             
-            {/* Dots */}
+            {/* Text Icon (old Dots) */}
             <motion.span
-              className="dots inline-block"
+              className="dots inline-block mt-[28px]"
               animate={{ opacity: isOpen ? 0 : 1 }}
-              transition={{ duration: 0.2 }}
+              //  marginTop: !isOpen ? '28px' : '0'
+              transition={{ duration: 0.3, delay: 0.3 }}
             >
-              ...
+              <TextIcon w="40" h="40" />
+
             </motion.span>
 
             {/* Name */}
             <motion.h4
-              className="text-black font-title mt-12 text-center mb-10"
-              animate={{ opacity: isOpen ? 1 : 0, marginTop: isOpen ? "-10px" : "20px" }}
+              className={`text-black font-title text-center mt-2 mb-3`}
+              animate={{ opacity: isOpen ? 1 : 0, marginTop: isOpen ? "-38px" : "20px" }}
               transition={{ duration: 0.5 }}
             >
               {name}
             </motion.h4>
 
-            {/* Bio */}
-            <div className="overflow-y-auto max-h-[400px] px-6 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 hyphens-auto text-justify">
-              <motion.p
-                className="text-lg text-black leading-8 text-center"
-                animate={{ opacity: isOpen ? 1 : 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                {shortBio}
-              </motion.p>
-            </div>
+            {/* Bio + Button Container */}
+              <div className="relative h-full px-6 pt-2 pb-[60px]">
+                {/* Scrollable Bio */}
+                <div className="overflow-y-auto max-h-[385px] hyphens-auto text-justify pr-2">
+                  <motion.p
+                    className="text-lg text-black leading-8 text-center"
+                    animate={{ opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {shortBio}
+                  </motion.p>
+                </div>
+
+                {/* Fixed Button */}
+                <div className="absolute bottom-28 left-0 right-0 flex justify-center">
+                  <Link
+                    to={`/portfolio/${slugify(name)}`}
+                    className={`px-8 py-1.5 text-xs text-white bg-[#666] rounded-full shadow hover:bg-[#444] transition-all duration-500  ${isOpen ? 'delay-[2s]' : 'z-[-1] opacity-0'}`}
+                  >
+                    Részletek...
+                  </Link>
+                </div>
+              </div>
+
+
           </motion.div>
         </div>
       </div>
