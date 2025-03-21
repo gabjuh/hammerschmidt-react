@@ -35,7 +35,7 @@ function App() {
             <Route path="/impresszum" element={<PageWrapper><Impressum /></PageWrapper>} />
             <Route path="/adatvedelmi-nyilatkozat" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
             <Route path="/plakatok" element={<PageWrapper><AdvertStuff /></PageWrapper>} />
-            <Route path="/program" element={<PageWrapper><Program /></PageWrapper>} />
+            <Route path="/koncertprogram" element={<PageWrapper><Program /></PageWrapper>} />
             <Route path="/portfolio/:name" element={<PageWrapper><MusicianPortfolio /></PageWrapper>} />
           </Route>
         </Routes>
