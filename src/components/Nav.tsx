@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'; // Import Framer Motion
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -102,32 +103,43 @@ const Nav = () => {
           <HamburgerIcon w="30" h="30" />
         </button>
 
-        {isDropdownOpen && (
-          <div ref={menuRef}>
-            <ul
-              id="dropdown-menu"
-              className="absolute right-0 top-24 bg-[#fff1] rounded-lg w-[300px] py-5 px-7 backdrop-filter backdrop-blur-xl text-center"
+        {/* Animated Dropdown */}
+        <AnimatePresence>
+          {isDropdownOpen && (
+            <motion.div
+              ref={menuRef}
+              initial={{ opacity: 0, y: -20 }} // Start position (hidden)
+              animate={{ opacity: 1, y: 0 }} // Show with smooth transition
+              exit={{ opacity: 0, y: -20 }} // Hide with fade-out
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="absolute right-0 top-20 bg-[#76594Cff] w-full py-5 px-7 text-center shadow-lg rounded-lg"
             >
-              {menuData.map((item, index) =>
-                item.link.startsWith("#") ? (
-                  <li key={index}>
-                    <Link to={item.link} onClick={handleMenuClick} className="block py-2 hover:opacity-75 transition">
-                      {item.text}
-                    </Link>
-                  </li>
-                ) : (
-                  <DropdownItem
-                    text={item.text}
-                    link={item.link}
-                    key={index}
-                    classes={item.isHighlighted ? "bg-orange-300 rounded-full !text-white" : ""}
-                    handleClick={handleMenuClick}
-                  />
-                )
-              )}
-            </ul>
-          </div>
-        )}
+              <ul id="dropdown-menu">
+                {menuData.map((item, index) =>
+                  item.link.startsWith("#") ? (
+                    <li key={index}>
+                      <Link
+                        to={item.link}
+                        onClick={handleMenuClick}
+                        className="block py-2 hover:opacity-75 transition"
+                      >
+                        {item.text}
+                      </Link>
+                    </li>
+                  ) : (
+                    <DropdownItem
+                      text={item.text}
+                      link={item.link}
+                      key={index}
+                      classes={item.isHighlighted ? "bg-orange-300 rounded-full !text-white px-4 py-2" : ""}
+                      handleClick={handleMenuClick}
+                    />
+                  )
+                )}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

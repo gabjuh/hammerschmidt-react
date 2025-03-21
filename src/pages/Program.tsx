@@ -1,13 +1,13 @@
 import PageContentWrapper from '../components/PageContentWrapper';
 import PageTitle from '../components/PageTitle';
 
-const AdvertStuff = () => {
+const Program = () => {
   return (
     <PageContentWrapper>
-      <PageTitle text="Plakátok, szóróanyagok" />
+      <PageTitle text="Koncertprogram" />
       Hamarosan...
     </PageContentWrapper>
   )
 }
 
-export default AdvertStuff
+export default Program;

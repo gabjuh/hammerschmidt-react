@@ -190,6 +190,12 @@ html {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .musician-card-name {
+    @apply text-4xl;
+  }
+}
+
 .musician-bio p {
   @apply mt-2;
 }
@@ -199,7 +205,8 @@ html {
 }
 
 .musician-bio a,
-#privacy-policy a {
+#privacy-policy a,
+#impressum a {
   font-weight: 700;
   @apply text-orange-300;
 }

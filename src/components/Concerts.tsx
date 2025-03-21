@@ -3,8 +3,8 @@ import EventItem from './EventItem';
 
 const Concerts = () => {
   return (
-    <div id="concerts" className="py-32">
-      <div className="max-w-6xl mx-auto px-6">
+    <div id="concerts" className="py-14 lg:py-18">
+      <div className="max-w-6xl mx-auto px-2 md:px-6">
         <h2 className="text-center text-4xl font-bold mb-10 text-orange-300 font-title">Koncertek</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

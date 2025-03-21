@@ -40,7 +40,7 @@ const EventItem = ({ city, address, place, date, time, infoText, mapsLink }: eve
         {/* Church Name Tag with Icon */}
         <div className="flex items-center pl-5 ml-4 bg-orange-400 text-white px-4 py-2 rounded-lg shadow-md">
           <ChurchIcon w="42" h="42" />
-          <span className="pl-4 text-lg font-semibold">{place}</span>
+          <span className="md:pl-4 text-lg font-semibold">{place}</span>
         </div>
       </div>
 
