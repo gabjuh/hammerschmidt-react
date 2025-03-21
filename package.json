@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "bash deploy.sh"
+    "deploy": "pnpm run build && bash deploy.sh"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
