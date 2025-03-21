@@ -1,12 +1,12 @@
 import './App.css';
 
 import { AnimatePresence } from 'framer-motion';
-import { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import PageWrapper from './components/PageWrapper';
 import PasswordProtectedApp from './components/PasswordProtectedApp';
+import ScrollToTop from './components/ScrollToTop';
 import AdvertStuff from './pages/AdvertStuff';
 import Home from './pages/Home';
 import Impressum from './pages/Impressum';
@@ -17,18 +17,10 @@ import Program from './pages/Program';
 function App() {
   const location = useLocation();
 
-  useEffect(() => {
-    if (location.hash) {
-      const element = document.getElementById(location.hash.substring(1)); // Remove "#"
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  }, [location]);
-
   return (
     <PasswordProtectedApp>
       <AnimatePresence mode="wait">
+        <ScrollToTop />
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Layout />}>
             <Route index element={<PageWrapper><Home /></PageWrapper>} />
