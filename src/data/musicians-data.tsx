@@ -8,6 +8,7 @@ export type musiciansDataT = {
   website?: string;
   facebook?: string;
   youtube?: string;
+  showAsCard?: boolean;
 };
 
 export const musiciansData: musiciansDataT[] = [
@@ -35,8 +36,8 @@ export const musiciansData: musiciansDataT[] = [
   {
     name: "Budai Dávid",
     title: "Viola da Gamba, Basso Continuo",
-    bio: "Ich bin **Musiker**. Meistens Streicher. Meistens Gambist. Aber immer Musiker. Weil es mich interessiert. Weil ich mir den Erfindungsreichtum von Renaissance und Barock als Vorbild genommen habe. Weil es mich fasziniert, wie Musik, Klänge, Dramatik, Gefühle und Farben funktionieren. Ich denke und denke nach. Ich spiele und spiele nach. Ich rekreiere und kreiere, und halte ein Handwerk aufrecht: den Musiker.",
-    shortBio: "Ich bin Musiker. Meistens Streicher. Meistens Gambist. Aber immer Musiker. Weil es mich interessiert. Weil ich mir den Erfindungsreichtum von Renaissance und Barock als Vorbild genommen habe. Weil es mich fasziniert, wie Musik, Klänge, Dramatik, Gefühle und Farben funktionieren. Ich denke und denke nach. Ich spiele und spiele nach. Ich rekreiere und kreiere, und halte ein Handwerk aufrecht: den Musiker.",
+    bio: "Magyarországon született, munkásságának középpontjában a viola da gamba játéktechnikájának gyakorlati és kutatási összekapcsolása áll. **Hille Perl** és **Marianne Muller** vezetésével fejlesztette ki a polifon játék improvizatív kísérőstílusát, valamint a szólisztikus hangszerelési elveket. Elsősorban az angol repertoárra és a *16-17. század improvizált kontrapunktjá*ra fókuszál. Koncertjei során Európa-szerte és azon kívül számos országban és változatos előadói környezetben lépett fel. A [PRISMA](https://www.prisma-music.eu/), a [Geigenconsort Bremen](https://www.geigenconsortbremen.com/) együttesek társalapítója, valamint rendszeres vendége a **Musica Cubicularis** és a **Hanse Pfeyfferey** formációknak.",
+    shortBio: "Zenész vagyok. Többnyire gambás, mindig zenész. Mert érdekel, mert inspirál a reneszánsz és a barokk kreativitása. Lenyűgöz, hogyan működnek a hangok, a dráma, az érzelmek és a színek. Játszom és újraalkotok, életben tartva a zenész mesterséget.",
     imgUrl: "/david-budai.png",
     imgName: "david",
     website: "https://davidbudai.de",
@@ -52,5 +53,15 @@ export const musiciansData: musiciansDataT[] = [
     imgName: "gabor",
     website: "https://gaborjuhasz.de",
     facebook: "https://www.facebook.com/gabor.juhasz.14473426",
+  },
+  {
+    name: "Andreas Hammerschmidt",
+    title: "A Szerző",
+    bio: "**Andreas Hammerschmidt** (1611/12–1675) a 17. századi **német egyházi zene** egyik legkiemelkedőbb, ám manapság kevésbé ismert alakja. Sokat elárul a megbecsüléséről, hogy sírkövére a *“zittaui Orfeusz”* feliratot vésték. Munkássága révén meghatározó szerepet játszott a **német protestáns egyházi zene fejlődésében**, és több mint **400 művével** a korszak egyik legtermékenyebb zeneszerzője volt. $$ Hammerschmidt a mai **Csehország** területén, *Brüx* (ma *Most*) városában született, egy **szász származású családban**. A **harmincéves háború** vallási és politikai viharai miatt családja 1626-ban kénytelen volt elhagyni szülőföldjét, és **Szászországban** telepedtek le. Hammerschmidt pályája **Freibergeben** kezdődött, ahol előbb orgonistaként szolgált, majd később **Zittau** városában töltötte be a *Johanniskirche* orgonistai posztját, amely élete végéig meghatározó maradt számára. Orgonistaként, orgonaszakértőként nagy hírnévre tett szert a környéken, és tevékenységeinek köszönhetően jelentős jólétben élhetett. $$ Hammerschmidt a mai közönség számára ismertebb **Heinrich Schütz** kortársa. Műveik, stílusban, minőségben, kidolgozottságban összehasonlíthatók, de érdemes megjegyezni, hogy míg **Schütz Itáliában tanult**, világlátott zeneszerző volt, **Hammerschmidt** a fennmaradt dokumentumok tanúsága szerint valószínűleg egész pályája során ki sem mozdult Zittauból. Dedikációi, levelei, előszavai alapján *kiemelkedően művelt*, ugyanakkor *rendkívül szenvedélyes* ember volt, és e szenvedély néha *hirtelen dühkitörésekben* is testet ölthetett. $$ Művei elsősorban **vokális egyházi kompozíciók** kórusra vagy énekhangokra **continuóval** és szólóhangszerekkel, amelyeket különböző liturgikus alkalmakra írt. Zeneszerzői stílusában a **német protestáns motettahagyomány**, és az újabb *concertato* stílus szintézise figyelhető meg. Műveiben gyakran *egyszerű, de kifejező dallamokat* társít a szövegsorokhoz, hogy a szöveg jelentését kiemelje. Fiatalkori műveiben inkább a szöveg képi és affektív elemeinek zenei megjelenítése volt fontos számára, későbbi művei *letisztultabb, csiszoltabb stílusban* szólalnak meg. $$ Noha **Hammerschmidt orgonista** volt, *egyáltalán nem maradt fenn orgonára írt kompozíciója*. Hangszeres művei mindössze három kötetet foglalnak el, egyrészt az Észak- és Közép-Németországban ekkor divatos *angol szvitek*, másrészt a jellegzetesen *toronyzenészek* által rézfúvós együtteseken megszólaltatott változatos formájú darabok hatását tükrözik. $$ További információkért lásd: [Wikipedia – Andreas Hammerschmidt](https://hu.wikipedia.org/wiki/Andreas_Hammerschmidt), [Grove Music Online](https://www.oxfordmusiconline.com/), [JSTOR tanulmányok](https://www.jstor.org/stable/23553094)",
+    shortBio: "**Andreas Hammerschmidt** (1611/12–1675) a 17. századi **német protestáns egyházi zene** kiemelkedő alakja, akit kortársai „*zittaui Orfeusz*”-ként emlegettek. Több mint **400 művet** komponált, orgonistaként és zeneszerzőként főleg **Zittauban** alkotott, jelentősen befolyásolva a korszak egyházi zenéjét. $$ Zenéjében a **német motettahagyomány** és a **concertato stílus** egyesül, egyszerű, kifejező dallamokkal. Életműve, **Heinrich Schütz** mellett, fontos része a német barokk zenei örökségének.",
+    imgUrl: "",
+    imgName: "",
+    website: "https://hu.wikipedia.org/wiki/Andreas_Hammerschmidt",
+    showAsCard: false,
   }
 ]
