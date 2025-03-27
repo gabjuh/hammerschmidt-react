@@ -1,34 +1,44 @@
-import banner from '../assets/img/stage.png';
+import banner1024 from '../assets/img/stage-1024.webp';
+import banner1440 from '../assets/img/stage-1440.webp';
+import banner1920 from '../assets/img/stage-1920.webp';
+import banner2560 from '../assets/img/stage-2560.webp';
+import banner480 from '../assets/img/stage-480.webp';
+import banner768 from '../assets/img/stage-768.webp';
 
 const Banner = () => {
   return (
-    <div id="banner" className="mx-auto bg-cover bg-bottom bg-no-repeat h-auto" style={{backgroundImage: `url(${banner})`}}>
-  {/* style="background-image: url('src/img/noten.png');" */}
-  {/* <div class="absolute h-[400px] w-full bottom-0 bg-gradient-to-b from-transparent to-white"></div> */}
-  <div>
-    {/* bg-black/60 */}
-    <div className="relative mx-auto px-4 h-[88vh]">
-      <div className="absolute text-center text-white left-0 right-0 top-[50%] translate-y-[-50%]">
-        <h2 className="text-2xl sm:text-xl md:text-4xl font-title mb-3 high-contrast-text ">Projekt</h2>
-        <h1 className="text-4xl md:text-6xl font-title drop-shadow-lg text-orange-300 high-contrast-text">Musica Hammerschmidtalis</h1>
-        <h2 className="text-xl sm:text-lg md:text-2xl mt-3 font-title drop-shadow-lg high-contrast-text">Lorem ipsum dolor sit amet.</h2>
-        {/* <p className="text-lg font-content-thin tracking-[1px] sm:text-base md:text-xl mt-5 max-w-[90%] md:max-w-[70%] drop-shadow-lg mx-auto high-contrast-text text-left auto-hyphens md:text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A repellat itaque accusamus, quam inventore laboriosam est molestiae architecto, consequuntur, quos officiis doloribus cumque aut necessitatibus qui possimus! Quae, voluptas modi!
-        </p> */}
-        <div className="mt-3">
-          <a href="#concerts" className="inline-block font-content-medium mt-5 px-7 py-2 rounded-full bg-[#A14028] shadow-lg text-white font-bold hover:bg-[#A14028] transition duration-200 high-contrast-obj scroll-trigger" data-scroll-target="concerts">
+    <div id="banner" className="relative h-[88vh] w-full overflow-hidden">
+      {/* h-[88vh] */}
+      <picture className="absolute top-0 left-0 w-full h-full z-0">
+        <source srcSet={banner2560} media="(min-width: 1920px)" />
+        <source srcSet={banner1920} media="(min-width: 1440px)" />
+        <source srcSet={banner1440} media="(min-width: 1024px)" />
+        <source srcSet={banner1024} media="(min-width: 768px)" />
+        <source srcSet={banner768} media="(min-width: 480px)" />
+        <img
+          src={banner480}
+          alt="Stage background"
+          className="w-full h-full object-cover object-bottom"
+        />
+      </picture>
+
+      <div className="absolute h-[400px] w-full bottom-0 z-10 pointer-events-none"></div>
+
+      <div className="relative z-20 flex flex-col items-center justify-center text-center text-white h-full px-4">
+        <p className="text-xl md:text-4xl font-title mb-3 high-contrast-text">Hammerschmidt Consort</p>
+        <p className="text-4xl md:text-6xl font-title drop-shadow-lg text-orange-300 high-contrast-text">A bizalom ösvénye</p>
+        <p className="text-lg md:text-2xl mt-3 font-title drop-shadow-lg high-contrast-text">A 17. század egy elfeledett mestere: Andreas Hammerschmidt</p>
+        <div className="mt-6 flex gap-4 flex-wrap justify-center">
+          <a href="#concerts" className="px-6 py-2 rounded-full bg-[#A14028] shadow text-white font-bold hover:bg-[#832f1c] transition duration-200 high-contrast-obj">
             Helyszínek
           </a>
-          <a href="#musicians" className="inline-block font-content-medium mt-5 ml-5 px-7 py-2 rounded-full border-2 border-[#A14028] shadow-lg text-[#A14028] font-bold bg-[#E4BF87] transition ease-in-out duration-300 high-contrast-obj scroll-trigger" data-scroll-target="musicians">
+          <a href="#musicians" className="px-6 py-2 rounded-full border-2 border-[#A14028] shadow text-[#A14028] font-bold bg-[#E4BF87] hover:brightness-110 transition duration-200  high-contrast-obj">
             Művészek
           </a>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  );
+};
 
-  )
-}
-
-export default Banner
+export default Banner;
