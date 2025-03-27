@@ -21,7 +21,7 @@ export const ProgramData: ProgramDataT = {
     },
     {
       title: "Ballet",
-      source: "",
+      source: "Ander Theil, Newer Paduanen, Freiberg, 1639",
       description: ""
     },
     {
@@ -46,7 +46,7 @@ export const ProgramData: ProgramDataT = {
     },
     {
       title: "Variationen",
-      source: "",
+      source: "Ander Theil, Newer Paduanen, Freiberg, 1639",
       description: ""
     },
     {
@@ -61,7 +61,7 @@ export const ProgramData: ProgramDataT = {
     },
     {
       title: "Canzon",
-      source: "",
+      source: "Ander Theil, Newer Paduanen, Freiberg, 1639",
       description: ""
     },
     {
