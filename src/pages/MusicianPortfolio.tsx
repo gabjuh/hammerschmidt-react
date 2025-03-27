@@ -11,7 +11,7 @@ import Hr from '../components/Hr';
 import { musiciansData } from '../data/musicians-data';
 import { slugify } from '../utils/slugify';
 
-const LinkRenderer: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href, children, ...props }) => {
+export const LinkRenderer: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href, children, ...props }) => {
   return (
     <a href={href} target="_blank" rel="noreferrer" {...props}>
       {children}
