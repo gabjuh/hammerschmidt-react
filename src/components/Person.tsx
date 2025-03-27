@@ -123,9 +123,9 @@ const Person = ({
                 <div className="absolute bottom-28 left-0 right-0 flex justify-center">
                   <Link
                     to={`/portfolio/${slugify(name)}`}
-                    className={`px-8 py-1.5 text-xs text-white bg-[#666] rounded-full shadow hover:bg-[#444] transition-all duration-500  ${isOpen ? 'delay-[2s]' : 'z-[-1] opacity-0'}`}
+                    className={`px-8 py-1.5 text-xs text-white bg-[#666] rounded-full shadow hover:bg-[#444] transition-all duration-500  ${isOpen ? 'delay-[1.5s]' : 'z-[-1] opacity-0'}`}
                   >
-                    Részletek...
+                    Tovább &rarr;
                   </Link>
                 </div>
               </div>
