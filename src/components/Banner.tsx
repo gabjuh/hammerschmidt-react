@@ -7,7 +7,7 @@ import banner768 from '../assets/img/stage-768.webp';
 
 const Banner = () => {
   return (
-    <div id="banner" className="relative h-[88vh] w-full overflow-hidden">
+    <div id="banner" className="relative h-[88vh] max-h-[400px] md:max-h-[700px] lg:max-h-[1000px] 2xl:max-h-[90vh] w-full overflow-hidden">
       {/* h-[88vh] */}
       <picture className="absolute top-0 left-0 w-full h-full z-0">
         <source srcSet={banner2560} media="(min-width: 1920px)" />

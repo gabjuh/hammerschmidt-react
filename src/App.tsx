@@ -1,11 +1,12 @@
 import './App.css';
 
 import { AnimatePresence } from 'framer-motion';
+import { HelmetProvider } from 'react-helmet-async';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import PageWrapper from './components/PageWrapper';
-import PasswordProtectedApp from './components/PasswordProtectedApp';
+// import PasswordProtectedApp from './components/PasswordProtectedApp';
 import ScrollToTop from './components/ScrollToTop';
 import AdvertStuff from './pages/AdvertStuff';
 import Home from './pages/Home';
@@ -18,7 +19,8 @@ function App() {
   const location = useLocation();
 
   return (
-    <PasswordProtectedApp>
+    // <PasswordProtectedApp>
+    <HelmetProvider>
       <AnimatePresence mode="wait">
         <ScrollToTop />
         <Routes location={location} key={location.pathname}>
@@ -32,7 +34,8 @@ function App() {
           </Route>
         </Routes>
       </AnimatePresence>
-    </PasswordProtectedApp>
+    </HelmetProvider>
+    // </PasswordProtectedApp>
   );
 }
 
