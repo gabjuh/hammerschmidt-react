@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, FC, useEffect, useRef } from 'react';
+import { AnchorHTMLAttributes, FC, useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
@@ -10,7 +10,10 @@ import WebsiteIcon from '../assets/svg/website-icon';
 import YoutubeIcon from '../assets/svg/youtube-icon';
 import BackLink from '../components/BackLink';
 import Hr from '../components/Hr';
-import { musiciansData } from '../data/musicians-data';
+import MusicianNavigationWidget, {
+    MusicianNavigationWidgetDataT
+} from '../components/MusicianNavigationWidget';
+import { musiciansData, musiciansDataT } from '../data/musicians-data';
 import { slugify } from '../utils/slugify';
 
 export const LinkRenderer: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href, children, ...props }) => {
@@ -21,13 +24,35 @@ export const LinkRenderer: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href
   );
 };
 
+
+
+
 const MusicianPortfolio = () => {
   const { name } = useParams<{ name: string }>(); 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [musiciansNavigationWidgetsData, setMusiciansNavigationWidgetsData] = useState<MusicianNavigationWidgetDataT[]>([]);
 
   // Ensure the page loads at the top immediately without smooth scrolling
   useEffect(() => {
+    const data: MusicianNavigationWidgetDataT[] = [];
+
+    musiciansData.map((person: musiciansDataT) => {
+      if (musiciansNavigationWidgetsData.find((mus: MusicianNavigationWidgetDataT) => mus.name === person.name) || slugify(person.name) === name) {
+        return;
+      }
+
+      data.push({
+        name: person.name,
+        imgUrl: person.imgUrl,
+        portfolioUrl: `/portfolio/${slugify(person.name)}`
+      })
+
+    })
+    setMusiciansNavigationWidgetsData(data);
+
+    // console.log(musiciansNavigationWidgetsData)
+
     window.scrollTo(0, 0);
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual"; // Disable browser's scroll memory
@@ -77,6 +102,7 @@ const MusicianPortfolio = () => {
         <link rel="canonical" href="https://hammerschmidt-consort.com/plakatok" />
       </Helmet>
       <div className="min-h-[400px] text-white flex justify-center px-3 pt-7 md:p-6 mb-10 pb-5 relative">
+
         {/* <div className="absolute">
           <Deviders h="182.83 " w="1219.87" color="red"/>
         </div> */}
@@ -145,6 +171,8 @@ const MusicianPortfolio = () => {
                 )}
               </div>
             </div>
+            
+            <MusicianNavigationWidget musicians={musiciansNavigationWidgetsData} />
 
           </div>
 
