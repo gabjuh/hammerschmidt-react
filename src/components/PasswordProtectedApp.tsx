@@ -4,6 +4,7 @@ const PASSWORD_KEY = "sitePassword"; // LocalStorage key
 const CORRECT_PASSWORD = "LikeSchützOnSpeed";
 
 const PasswordProtectedApp = ({ children }: { children: React.ReactNode }) => {
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {

@@ -24,19 +24,21 @@ const Banner = () => {
 
       <div className="absolute h-[400px] w-full bottom-0 z-10 pointer-events-none"></div>
 
-      <div className="relative z-20 flex flex-col items-center justify-center text-center text-white h-full px-4">
-        <p className="text-xl md:text-4xl font-title mb-3 high-contrast-text">Hammerschmidt Consort</p>
-        <p className="text-4xl md:text-6xl font-title drop-shadow-lg text-orange-300 high-contrast-text">A bizalom ösvénye</p>
-        <p className="text-lg md:text-2xl mt-3 font-title drop-shadow-lg high-contrast-text">A 17. század egy elfeledett mestere: Andreas Hammerschmidt</p>
-        <div className="mt-6 flex gap-4 flex-wrap justify-center">
-          <a href="#concerts" className="px-6 py-2 rounded-full bg-[#A14028] shadow text-white font-bold hover:bg-[#832f1c] transition duration-200 high-contrast-obj">
-            Helyszínek
-          </a>
-          <a href="#musicians" className="px-6 py-2 rounded-full border-2 border-[#A14028] shadow text-[#A14028] font-bold bg-[#E4BF87] hover:brightness-110 transition duration-200  high-contrast-obj">
-            Művészek
-          </a>
+        <div className="z-20 relative flex flex-col items-center justify-center text-center text-white h-full px-4">
+          <div className="bg-white/5 px-5 sm:px-7 py-5 md:px-10 md:py-7 lg:px-24 lg:py-10 backdrop-blur-md rounded-[30px]">
+            <p className="text-xl md:text-4xl font-title mb-3">Hammerschmidt Consort</p>
+            <p className="text-4xl md:text-6xl font-title drop-shadow-lg text-orange-300">A bizalom ösvénye</p>
+            <p className="text-lg md:text-2xl mt-3 font-title drop-shadow-lg">A 17. század egy elfeledett mestere: Andreas&nbsp;Hammerschmidt</p>
+            <div className="mt-6 flex gap-4 flex-wrap justify-center">
+              <a href="#concerts" className="px-6 py-2 rounded-full bg-[#A14028] shadow text-white font-bold hover:bg-[#832f1c] transition duration-200">
+                Helyszínek
+              </a>
+              <a href="#musicians" className="px-6 py-2 rounded-full border-2 border-[#A14028] shadow text-[#A14028] font-bold bg-[#E4BF87] hover:brightness-110 transition duration-200">
+                Művészek
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
   );
 };
