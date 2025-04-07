@@ -4,12 +4,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import App from './App';
+import { AppContent } from './App'; // ✅ import the named export
+import { LanguageProvider } from './context/LanguageContext';
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <LanguageProvider>
+        <AppContent />
+      </LanguageProvider>
     </BrowserRouter>
   </React.StrictMode>
+
 );
