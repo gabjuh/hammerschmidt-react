@@ -43,58 +43,60 @@ const ContactForm = () => {
   
 
   return (
-    <div className="max-w-lg mx-auto p-8 bg-white shadow-lg rounded-xl">
-      <h2 className="font-title text-3xl font-bold text-orange-500 text-center mb-6">Kapcsolat</h2>
+    <>
+      <h2 id="kapcsolat" className="font-title text-4xl text-orange-300 text-center mb-6 mt-10">Kapcsolat</h2>
+      <div className="max-w-lg mx-auto p-8 bg-white shadow-lg rounded-xl mb-10 pt-[50px]">
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        {/* Name */}
-        <input
-          type="text"
-          name="name"
-          placeholder="Név"
-          required
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-        />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {/* Name */}
+          <input
+            type="text"
+            name="name"
+            placeholder="Név"
+            required
+            className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+          />
 
-        {/* Email */}
-        <input
-          type="email"
-          name="email"
-          placeholder="E-mail cím"
-          required
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-        />
+          {/* Email */}
+          <input
+            type="email"
+            name="email"
+            placeholder="E-mail cím"
+            required
+            className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+          />
 
-        {/* Message */}
-        <textarea
-          name="message"
-          placeholder="Üzenet"
-          required
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-          rows={4}
-        />
+          {/* Message */}
+          <textarea
+            name="message"
+            placeholder="Üzenet"
+            required
+            className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+            rows={4}
+          />
 
-        {/* Honeypot (Invisible Field for Spam Protection) */}
-        <input type="text" name="_gotcha" className="hidden" />
+          {/* Honeypot (Invisible Field for Spam Protection) */}
+          <input type="text" name="_gotcha" className="hidden" />
 
-        {/* Google reCAPTCHA */}
-        <div className="flex justify-center">
-          <div className="g-recaptcha" data-sitekey="6Lca4PkqAAAAAF3cQ2zU7_9mYBOHtmDo3xBOhs8m"></div>
-        </div>
+          {/* Google reCAPTCHA */}
+          <div className="flex justify-center">
+            <div className="g-recaptcha" data-sitekey="6Lca4PkqAAAAAF3cQ2zU7_9mYBOHtmDo3xBOhs8m"></div>
+          </div>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={loading}
-          className="px-4 py-2 bg-orange-500 text-white font-semibold rounded-md hover:bg-orange-600 transition"
-        >
-          {loading ? "Küldés..." : "Üzenet küldés"}
-        </button>
-      </form>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-4 py-2 cursor-pointer bg-orange-300 text-white font-semibold rounded-md hover:bg-orange-400 transition"
+          >
+            {loading ? "Küldés..." : "Üzenet küldés"}
+          </button>
+        </form>
 
-      {/* Success/Error Message */}
-      {message && <p className="mt-4 text-center text-sm">{message}</p>}
-    </div>
+        {/* Success/Error Message */}
+        {message && <p className="mt-4 text-center text-sm">{message}</p>}
+      </div>
+    </>
   );
 };
 
