@@ -57,7 +57,23 @@ const Project = () => {
           <h3 className="text-3xl font-title sm:text-2xl mb-5 mt-3 opacity-50">
             „Zittaui Orfeusz, kinek hangjai Isten trónja előtt zengenek tovább.”
           </h3>
-          <p className="font-content-extralight sm:text-base leading-6">
+
+          {/* Video Block - Desktop */}
+          <div
+            ref={containerRef}
+            className="w-full lg:w-1/2 flex lg:hidden justify-center mb-8 md:mb-0 mt-10 lg:mt-0"
+          >
+            <video
+              ref={videoRef}
+              className="w-full max-w-[400px] md:max-w-[450px] rounded-xl shadow-lg"
+              src={hammerschmidtVideo}
+              muted
+              loop={true}
+              playsInline
+            />
+          </div>
+
+          <p className="font-content-extralight sm:text-base leading-6 mt-12 lg:mt-0">
             <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ a: LinkRenderer}}>
               { hammerschmidt?.shortBio.replace(/\$\$/g, "\n\n") }
             </ReactMarkdown>
@@ -77,10 +93,10 @@ const Project = () => {
           </Link>
         </div>
 
-        {/* Video Block */}
+        {/* Video Block - Desktop */}
         <div
           ref={containerRef}
-          className="w-full lg:w-1/2 flex justify-center mb-8 md:mb-0 mt-10 lg:mt-0"
+          className="w-full lg:w-1/2 hidden lg:flex justify-center mb-8 md:mb-0 mt-10 lg:mt-0"
         >
           <video
             ref={videoRef}
