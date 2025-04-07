@@ -24,9 +24,6 @@ export const LinkRenderer: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href
   );
 };
 
-
-
-
 const MusicianPortfolio = () => {
   const { name } = useParams<{ name: string }>(); 
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -171,8 +168,6 @@ const MusicianPortfolio = () => {
                 )}
               </div>
             </div>
-            
-            <MusicianNavigationWidget musicians={musiciansNavigationWidgetsData} />
 
           </div>
 
@@ -190,7 +185,7 @@ const MusicianPortfolio = () => {
                 {musician.bio.replace(/\$\$/g, "\n\n")}
               </ReactMarkdown>
             </div>
-
+            <MusicianNavigationWidget musicians={musiciansNavigationWidgetsData} />
           </div>
           {/* Back Link */}
           {/* <Link to={`/#${name}`} className="text-center absolute bottom-3 right-3  block mt-6 opacity-80 hover:opacity-100 text-orange-300 hover:text-orange-400 transition-all ease-in-out duration-300 scale-y-[-1]">

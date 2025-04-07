@@ -68,7 +68,7 @@ const Nav = () => {
         <div className="grow w-[350px] px-5">
           <Link
             to="/"
-            className="inline-block font-title text-white text-2xl mt-[3px] lg:text-md lg:mt-[2px] xl:text-2xl  2xl:text-3xl"
+            className="inline-block font-title text-orange-300 text-2xl mt-[3px] lg:text-md lg:mt-[2px] xl:text-2xl  2xl:text-3xl"
           >
             {/* <span className="opacity-60">Musica</span> Hammerschmidt
             <span className="opacity-60">alis</span> */}

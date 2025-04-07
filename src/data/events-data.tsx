@@ -24,12 +24,12 @@ export const eventsData: eventsDataT[] = [
     place: "Katolikus templom",
     date: "Április 24",
     time: "18:00",
-    infoText: "A belépés díjtalan, de adományokat elfogadunk. (A maps linket es a cimet le kell csekkolni)",
+    infoText: "A belépés díjtalan, de adományokat elfogadunk.",
     mapsLink: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1437535.0984928817!2d18.991432044392635!3d47.312676902017785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474389cd7e0f033b%3A0x2c487ef7dcf7b7b9!2sKatolikus%20templom!5e0!3m2!1sde!2sde!4v1742409195227!5m2!1sde!2sde"
   },
   {
     city: "Budafok",
-    address: "Játék utca 14 (?)",
+    address: "Játék utca 16",
     place: "Evangélikus templom",
     date: "Április 25",
     time: "18:00",
