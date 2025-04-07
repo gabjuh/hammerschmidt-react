@@ -96,7 +96,7 @@ const MusicianPortfolio = () => {
       <Helmet>
         <title>{musician.name} portfólió oldala</title>
         <meta name="description" content={`${musician.name} portfólió oldala`} />
-        <link rel="canonical" href="https://hammerschmidt-consort.com/plakatok" />
+        <link rel="canonical" href="https://hammerschmidt-consort.com/" />
       </Helmet>
       <div className="min-h-[400px] text-white flex justify-center px-3 pt-7 md:p-6 mb-10 pb-5 relative">
 

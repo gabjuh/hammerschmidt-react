@@ -1,11 +1,35 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import banner1024 from '../assets/img/stage-1024.webp';
 import banner1440 from '../assets/img/stage-1440.webp';
 import banner1920 from '../assets/img/stage-1920.webp';
 import banner2560 from '../assets/img/stage-2560.webp';
 import banner480 from '../assets/img/stage-480.webp';
 import banner768 from '../assets/img/stage-768.webp';
+import { useLanguage } from '../context/LanguageContext';
+import scrollToId from '../helpers/scrollToId';
 
 const Banner = () => {
+  const location = useLocation();
+
+  const { lang } = useLanguage();
+
+  const navigate = useNavigate();
+  const currentPath = location.pathname;
+
+  const handleScrollOrNavigate = (targetId: string) => {
+    const langPrefix = `/${lang}`;
+    const isHome = currentPath === langPrefix || currentPath === `${langPrefix}/`;
+
+    if (isHome) {
+      scrollToId(targetId);
+    } else {
+      navigate(`${langPrefix}#${targetId}`);
+      // Wait until navigation completes, then scroll
+      setTimeout(() => scrollToId(targetId), 200);
+    }
+  };
+  
   return (
     <div id="banner" className="relative h-[88vh] max-h-[400px] md:max-h-[700px] lg:max-h-[1000px] 2xl:max-h-[90vh] w-full overflow-hidden">
       {/* h-[88vh] */}
@@ -30,12 +54,30 @@ const Banner = () => {
             <p className="text-4xl md:text-6xl font-title drop-shadow-lg text-orange-300">A bizalom ösvénye</p>
             <p className="text-lg md:text-2xl mt-3 font-title drop-shadow-lg">A 17. század egy elfeledett mestere: Andreas&nbsp;Hammerschmidt</p>
             <div className="mt-6 flex gap-4 flex-wrap justify-center">
-              <a href="#concerts" className="px-6 py-2 rounded-full bg-[#A14028] shadow text-white font-bold hover:bg-[#832f1c] transition duration-200">
+              <button
+                type="button"
+                className="px-6 py-2 rounded-full bg-[#A14028] shadow text-white font-bold hover:bg-[#832f1c] transition duration-200 cursor-pointer"
+                onClick={() => {
+                  handleScrollOrNavigate("#concerts".slice(1));
+                }}
+              >
                 Helyszínek
-              </a>
-              <a href="#musicians" className="px-6 py-2 rounded-full border-2 border-[#A14028] shadow text-[#A14028] font-bold bg-[#E4BF87] hover:brightness-110 transition duration-200">
+              </button>
+              <button
+                type="button"
+                className="px-6 py-2 rounded-full border-2 border-[#A14028] shadow text-[#A14028] font-bold bg-[#E4BF87] hover:brightness-110 transition duration-200"
+                onClick={() => {
+                  handleScrollOrNavigate("#musicians".slice(1));
+                }}
+              >
                 Művészek
-              </a>
+              </button>
+              {/* <LangLink to="#concerts" className="px-6 py-2 rounded-full bg-[#A14028] shadow text-white font-bold hover:bg-[#832f1c] transition duration-200">
+                Helyszínek
+              </LangLink>
+              <LangLink to="#musicians" className="px-6 py-2 rounded-full border-2 border-[#A14028] shadow text-[#A14028] font-bold bg-[#E4BF87] hover:brightness-110 transition duration-200">
+                Művészek
+              </LangLink> */}
             </div>
           </div>
         </div>

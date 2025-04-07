@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 
 import TextIcon from '../assets/svg/text-icon';
 import { slugify } from '../utils/slugify';
+import LangLink from './LangLink';
 
 const Person = ({
   name,
@@ -52,7 +52,7 @@ const Person = ({
       <div id={personId} className="absolute top-[-120px]"></div>
       <div className="mx-auto min-w-[300px] w-full h-full">
         <div className="flex-col relative bg-[#A89F89] md:px-10 py-10 shadow-md pb-[130px] pt-[50px]">
-          <Link to={`/portfolio/${slugify(name)}`}>
+          <LangLink to={`/portfolio/${slugify(name)}`}>
             <motion.div
               className="mx-auto size-[250px] bg-cover rounded-full bg-center transform-gpu shadow-sm hover:shadow-md"
               style={{ 
@@ -64,10 +64,10 @@ const Person = ({
               }}
               whileTap={{ scale: 0.95 }} // Kicsit összenyomódik kattintásra
             ></motion.div>
-          </Link>
+          </LangLink>
 
           <h3 className="font-title musician-card-name text-center mt-10 whitespace-nowrap">
-            <Link to={`/portfolio/${slugify(name)}`}>{name}</Link>
+            <LangLink to={`/portfolio/${slugify(name)}`}>{name}</LangLink>
           </h3>
           <p className="opacity-75 text-md mt-2 italic text-center">{title}</p>
 
@@ -121,12 +121,12 @@ const Person = ({
 
                 {/* Fixed Button */}
                 <div className="absolute bottom-28 left-0 right-0 flex justify-center">
-                  <Link
+                  <LangLink
                     to={`/portfolio/${slugify(name)}`}
                     className={`px-8 py-1.5 text-xs text-white bg-[#666] rounded-full shadow hover:bg-[#444] transition-all duration-500  ${isOpen ? 'delay-[1.5s]' : 'z-[-1] opacity-0'}`}
                   >
                     Tovább &rarr;
-                  </Link>
+                  </LangLink>
                 </div>
               </div>
 

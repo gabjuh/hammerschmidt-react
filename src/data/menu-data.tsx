@@ -7,23 +7,23 @@ export type menuDataT = {
 export const menuData: menuDataT[] = [
   {
     text: 'Kezdőlap',
-    link: '/#top'
+    link: '#top'
   },
   {
     text: 'Hammerschmidt',
-    link: '/#hammerschmidt'
+    link: '#hammerschmidt'
   },
   {
     text: 'Művészek',
-    link: '/#musicians'
+    link: '#musicians'
   },
   {
     text: 'Koncertek',
-    link: '/#concerts'
+    link: '#concerts'
   },
   {
     text: 'Kapcsolat',
-    link: 'mailto:adgbe@yahoo.de',
+    link: 'mailto:info@hammerschmidt-consort.com',
     isHighlighted: true
   }
 ]

@@ -1,9 +1,12 @@
 import { AnimatePresence, motion } from 'framer-motion'; // Import Framer Motion
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import HamburgerIcon from '../assets/svg/hamburger-icon';
+import { useLanguage } from '../context/LanguageContext';
 import { menuData } from '../data/menu-data';
+import scrollToId from '../helpers/scrollToId';
+import { LanguageSelector } from './LanguageSelector';
 import DropdownItem from './menu/DropdownItem';
 import MenuItem from './menu/MenuItem';
 
@@ -12,6 +15,24 @@ const Nav = () => {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
+
+  const { lang } = useLanguage();
+
+  const navigate = useNavigate();
+  const currentPath = location.pathname;
+
+  const handleScrollOrNavigate = (targetId: string) => {
+    const langPrefix = `/${lang}`;
+    const isHome = currentPath === langPrefix || currentPath === `${langPrefix}/`;
+
+    if (isHome) {
+      scrollToId(targetId);
+    } else {
+      navigate(`${langPrefix}#${targetId}`);
+      // Wait until navigation completes, then scroll
+      setTimeout(() => scrollToId(targetId), 200);
+    }
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -81,17 +102,31 @@ const Nav = () => {
           <ul className="flex justify-center">
             {menuData.map((item, index) =>
               item.link.startsWith("#") ? (
-                // Use 'a' tag for hash links (smooth scrolling)
-                <li key={index} className={`px-4 ${item.isHighlighted ? "!text-orange-300" : ""}`}>
-                  <Link to={item.link} className="hover:opacity-75 transition">
+                <li key={index} className={`px-4 relative group bg-[#A14028] text-white cursor-pointer first-of-type:rounded-l-full py-2 first-of-type:pl-7 last-o
+                f-type:rounded-r-full last-of-type:mr-7 lg:px-3 xl:px-3 2xl:px-5 ${item.isHighlighted ? "!text-orange-300" : ""}`}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleMenuClick();
+                      handleScrollOrNavigate(item.link.slice(1));
+                    }}
+                    className="block hover:opacity-75 transition cursor-pointer"
+                  >
                     {item.text}
-                  </Link>
+                  </button>
+                  {/* <Link to={item.link} className="hover:opacity-75 transition">
+                    {item.text}
+                  </Link> */}
                 </li>
-              ) : (
+              )
+              : (
                 // Use 'Link' for internal navigation
                 <MenuItem text={item.text} link={item.link} key={index} classes={item.isHighlighted ? "!text-orange-300" : ""} />
               )
             )}
+            <li className="relative group bg-[#A14028] text-white cursor-pointer first-of-type:rounded-l-full py-2 px-3 first-of-type:pl-7 last-of-type:rounded-r-full last-of-type:mr-6 lg:px-1 xl:px-3 2xl:px-5">
+              <LanguageSelector />    
+            </li>
           </ul>
         </div>
 
@@ -119,13 +154,23 @@ const Nav = () => {
                 {menuData.map((item, index) =>
                   item.link.startsWith("#") ? (
                     <li key={index}>
-                      <Link
-                        to={item.link}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleMenuClick();
+                          handleScrollOrNavigate(item.link.slice(1));
+                        }}
+                        className="text-center text-white opacity-75 py-2 hover:opacity-100 transition cursor-pointer"
+                      >
+                        {item.text}
+                      </button>
+                      {/* <Link
+                        to={{lang} + item.link}
                         onClick={handleMenuClick}
                         className="block py-2 hover:opacity-75 transition"
                       >
                         {item.text}
-                      </Link>
+                      </Link> */}
                     </li>
                   ) : (
                     <DropdownItem
@@ -138,6 +183,9 @@ const Nav = () => {
                   )
                 )}
               </ul>
+              <div className="absolute top-7 right-7">
+                <LanguageSelector />
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

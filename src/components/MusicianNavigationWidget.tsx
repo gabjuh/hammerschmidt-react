@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import LangLink from './LangLink';
 
 export type MusicianNavigationWidgetDataT = {
   name: string;
@@ -19,7 +19,7 @@ const MusicianNavigationWidget = ({
       <div className="flex justify-center md:justify-start z-10 mb-6">
         {/* TODO: sticky */}
         {musicians.map((person: MusicianNavigationWidgetDataT, i: number) => (
-          <Link 
+          <LangLink 
             to={person.portfolioUrl} 
             className="inline-block transition-transform duration-300 ease-in-out hover:scale-110 m-1"
           >
@@ -29,7 +29,7 @@ const MusicianNavigationWidget = ({
               style={{ backgroundImage: `url('${person.imgUrl}')` }}
               title={`${person.name}`}
             />
-          </Link>
+          </LangLink>
         ))}
       </div>
     </>

@@ -5,7 +5,7 @@ import Nav from './Nav';
 
 const Layout = () => {
   return (
-    <div className="min-h-screen flex flex-col font-content-light bg-[#54372Afe] cursor-default">
+    <div id="top" className="min-h-screen flex flex-col font-content-light bg-[#54372Afe] cursor-default">
       {/* Navbar */}
       <Nav />
 

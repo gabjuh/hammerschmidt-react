@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Link } from 'react-router-dom';
 import rehypeRaw from 'rehype-raw';
 
 import hammerschmidtVideo from '../assets/hammerschmidt.webm';
 import { musiciansData, musiciansDataT } from '../data/musicians-data';
 import { LinkRenderer } from '../pages/MusicianPortfolio';
+import LangLink from './LangLink';
 
 const Project = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -73,24 +73,24 @@ const Project = () => {
             />
           </div>
 
-          <p className="font-content-extralight sm:text-base leading-6 mt-12 lg:mt-0">
+          <div className="font-content-extralight sm:text-base leading-6 mt-12 lg:mt-0">
             <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ a: LinkRenderer}}>
               { hammerschmidt?.shortBio.replace(/\$\$/g, "\n\n") }
             </ReactMarkdown>
-          </p>
+          </div>
 
-          <Link
+          <LangLink
             to="/koncertprogram"
             className="inline-block font-content-medium mt-5 px-7 py-2 rounded-full bg-[#A14028] shadow-lg text-white font-bold hover:bg-[#A14028] transition duration-200 mr-3"
           >
             Koncertprogram
-          </Link>
-          <Link
+          </LangLink>
+          <LangLink
             to="/portfolio/andreas-hammerschmidt"
             className="inline-block font-content-medium mt-5 px-7 py-2 rounded-full bg-[#A14028] shadow-lg text-white font-bold hover:bg-[#A14028] transition duration-200"
           >
             Életrajz
-          </Link>
+          </LangLink>
         </div>
 
         {/* Video Block - Desktop */}
