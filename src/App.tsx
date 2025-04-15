@@ -5,8 +5,10 @@ import { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 
+import devSettings from '../dev-settings.json';
 import Layout from './components/Layout';
 import PageWrapper from './components/PageWrapper';
+import PasswordProtectedApp from './components/PasswordProtectedApp';
 import ScrollToTop from './components/ScrollToTop';
 import { useLanguage } from './context/LanguageContext';
 import { LanguageCode } from './i18n/languages';
@@ -53,7 +55,7 @@ export const LangRouter = () => {
 export const AppContent = () => {
   const location = useLocation();
 
-  return (
+  const app = (
     <HelmetProvider>
       <AnimatePresence mode="wait">
         <ScrollToTop />
@@ -64,6 +66,8 @@ export const AppContent = () => {
       </AnimatePresence>
     </HelmetProvider>
   );
+
+  return devSettings.isDev ? <PasswordProtectedApp>{app}</PasswordProtectedApp> : app;
 };
 
 export default AppContent;
