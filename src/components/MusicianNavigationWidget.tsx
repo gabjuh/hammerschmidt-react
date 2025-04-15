@@ -11,7 +11,6 @@ const MusicianNavigationWidget = ({
 }: {
   musicians: MusicianNavigationWidgetDataT[]
 }) => {
-  console.log(musicians)
   return (
     <>
       <h3 className="font-title text-orange-300 text-3xl mt-16 text-center md:text-left">További portfóliók:</h3>
@@ -22,6 +21,7 @@ const MusicianNavigationWidget = ({
           <LangLink 
             to={person.portfolioUrl} 
             className="inline-block transition-transform duration-300 ease-in-out hover:scale-110 m-1"
+            key={i}
           >
             <div
               key={i}
