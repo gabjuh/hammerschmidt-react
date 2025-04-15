@@ -1,28 +1,40 @@
 export type menuDataT = {
-  text: string;
+  textHu: string;
+  textDe: string;
+  textEn: string;
   link: string;
   isHighlighted?: boolean;
 }
 
 export const menuData: menuDataT[] = [
   {
-    text: 'Kezdőlap',
+    textHu: 'Kezdőlap',
+    textDe: 'Startseite',
+    textEn: 'Home',
     link: '#top'
   },
   {
-    text: 'Hammerschmidt',
+    textHu: 'Hammerschmidt',
+    textDe: 'Hammerschmidt',
+    textEn: 'Hammerschmidt',
     link: '#hammerschmidt'
   },
   {
-    text: 'Művészek',
+    textHu: 'Művészek',
+    textDe: 'Künstler',
+    textEn: 'Artists',
     link: '#musicians'
   },
   {
-    text: 'Koncertek',
+    textHu: 'Koncertek',
+    textDe: 'Konzerte',
+    textEn: 'Concerts',
     link: '#concerts'
   },
   {
-    text: 'Kapcsolat',
+    textHu: 'Kapcsolat',
+    textDe: 'Kontakt',
+    textEn: 'Contact',
     link: 'mailto:info@hammerschmidt-consort.com',
     isHighlighted: true
   }
