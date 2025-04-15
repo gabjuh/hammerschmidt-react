@@ -35,7 +35,7 @@ export const LanguageSelector = () => {
         <span className="bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer">
           {languages[lang].flag}
         </span>
-        <svg
+        {/* <svg
           className="w-4 h-4"
           fill="none"
           stroke="currentColor"
@@ -43,7 +43,7 @@ export const LanguageSelector = () => {
           viewBox="0 0 24 24"
         >
           <path d="M19 9l-7 7-7-7" />
-        </svg>
+        </svg> */}
       </button>
 
       {open && (
