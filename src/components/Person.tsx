@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 import TextIcon from '../assets/svg/text-icon';
+import { useLanguage } from '../context/LanguageContext';
+import { PageTexts } from '../data/page-texts-data';
+import { getLocalizedField } from '../i18n/utils';
 import { slugify } from '../utils/slugify';
 import LangLink from './LangLink';
 
@@ -24,6 +27,10 @@ const Person = ({
 }) => {
   const detailsRef = useRef<HTMLDivElement>(null);
   const personId = slugify(name);
+
+  const { lang } = useLanguage();
+
+  const artistReadOnButtonText = getLocalizedField(PageTexts, 'artistReadOnButtonText', lang)
 
   // Determine if this person is currently open
   const isOpen = openedPersonDetailsId === personId;
@@ -125,7 +132,7 @@ const Person = ({
                     to={`/portfolio/${slugify(name)}`}
                     className={`px-8 py-1.5 text-xs text-white bg-[#666] rounded-full shadow hover:bg-[#444] transition-all duration-500  ${isOpen ? 'delay-[1.5s]' : 'z-[-1] opacity-0'}`}
                   >
-                    Tovább &rarr;
+                    { artistReadOnButtonText } &rarr;
                   </LangLink>
                 </div>
               </div>

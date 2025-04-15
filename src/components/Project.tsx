@@ -3,7 +3,9 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
 import hammerschmidtVideo from '../assets/hammerschmidt.webm';
+import { useLanguage } from '../context/LanguageContext';
 import { musiciansData, musiciansDataT } from '../data/musicians-data';
+import { getLocalizedField } from '../i18n/utils';
 import { LinkRenderer } from '../pages/MusicianPortfolio';
 import LangLink from './LangLink';
 
@@ -11,7 +13,7 @@ const Project = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const hammerschmidt: musiciansDataT | undefined = musiciansData.find((person) => person.showAsCard === false);
+  const hammerschmidt: musiciansDataT = musiciansData.find((person) => person.showAsCard === false) ?? {} as musiciansDataT;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -35,12 +37,23 @@ const Project = () => {
       {
         threshold: 1.0, // Csak akkor játsszon, ha teljesen a képernyőn van
       }
-    );
+    );    
 
     observer.observe(container);
 
     return () => observer.disconnect();
   }, []);
+
+
+  const { lang } = useLanguage();
+  const name = getLocalizedField(hammerschmidt, 'name', lang);
+  const shortBio = getLocalizedField(hammerschmidt, 'shortBio', lang);
+  const secondTitle = getLocalizedField(hammerschmidt, 'secondTitle', lang);
+  const firstButtonName = getLocalizedField(hammerschmidt, 'firstButtonName', lang);
+  const firstButtonUrl = getLocalizedField(hammerschmidt, 'firstButtonUrl', lang);
+  const secondButtonName = getLocalizedField(hammerschmidt, 'secondButtonName', lang);
+  const secondButtonUrl = getLocalizedField(hammerschmidt, 'secondButtonUrl', lang);
+
 
   return (
     <div
@@ -52,10 +65,10 @@ const Project = () => {
         <div id="project-markdown-text" className="w-full lg:w-1/2 text-center lg:text-right">
           {/* <p className="text-2xl font-title">A szerző</p> */}
           <h2 className="font-title text-[2.4rem] leading-8.5 md:leading-10 sm:text-5xl my-5 text-orange-300 drop-shadow-lg">
-            { hammerschmidt?.name }
+            { name }
           </h2>
           <h3 className="text-3xl font-title sm:text-2xl mb-5 mt-3 opacity-50">
-            „Zittaui Orfeusz, kinek hangjai Isten trónja előtt zengenek tovább.”
+            {secondTitle}
           </h3>
 
           {/* Video Block - Desktop */}
@@ -75,21 +88,21 @@ const Project = () => {
 
           <div className="font-content-extralight sm:text-base leading-6 mt-12 lg:mt-0">
             <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ a: LinkRenderer}}>
-              { hammerschmidt?.shortBio.replace(/\$\$/g, "\n\n") }
+              { shortBio.replace(/\$\$/g, "\n\n") }
             </ReactMarkdown>
           </div>
 
           <LangLink
-            to="/koncertprogram"
+            to={firstButtonUrl}
             className="inline-block font-content-medium mt-5 px-7 py-2 rounded-full bg-[#A14028] shadow-lg text-white font-bold hover:bg-[#A14028] transition duration-200 mr-3"
           >
-            Koncertprogram
+            {firstButtonName}
           </LangLink>
           <LangLink
-            to="/portfolio/andreas-hammerschmidt"
+            to={secondButtonUrl}
             className="inline-block font-content-medium mt-5 px-7 py-2 rounded-full bg-[#A14028] shadow-lg text-white font-bold hover:bg-[#A14028] transition duration-200"
           >
-            Életrajz
+            {secondButtonName}
           </LangLink>
         </div>
 

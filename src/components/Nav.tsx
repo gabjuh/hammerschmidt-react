@@ -5,7 +5,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import HamburgerIcon from '../assets/svg/hamburger-icon';
 import { useLanguage } from '../context/LanguageContext';
 import { menuData } from '../data/menu-data';
+import { getLanguageKeyEnding } from '../helpers/getLanguageKeyEnding';
 import scrollToId from '../helpers/scrollToId';
+import { getLocalizedField } from '../i18n/utils';
 import { LanguageSelector } from './LanguageSelector';
 import DropdownItem from './menu/DropdownItem';
 import MenuItem from './menu/MenuItem';
@@ -100,8 +102,10 @@ const Nav = () => {
         {/* Menu Desktop */}
         <div className="flex-grow absolute right-0 lg:visible invisible font-title text-xl tracking-[1px] top-[22px]">
           <ul className="flex justify-center">
-            {menuData.map((item, index) =>
-              item.link.startsWith("#") ? (
+            {menuData.map((item, index) => {
+              const text = getLocalizedField(item, 'text', lang);
+              
+              return item.link.startsWith("#") ? (
                 <li key={index} className={`px-4 relative group bg-[#A14028] text-white cursor-pointer first-of-type:rounded-l-full py-2 first-of-type:pl-7 last-o
                 f-type:rounded-r-full last-of-type:mr-7 lg:px-3 xl:px-3 2xl:px-5 ${item.isHighlighted ? "!text-orange-300" : ""}`}>
                   <button
@@ -112,7 +116,7 @@ const Nav = () => {
                     }}
                     className="block hover:opacity-75 transition cursor-pointer"
                   >
-                    {item.text}
+                    {text}
                   </button>
                   {/* <Link to={item.link} className="hover:opacity-75 transition">
                     {item.text}
@@ -121,10 +125,10 @@ const Nav = () => {
               )
               : (
                 // Use 'Link' for internal navigation
-                <MenuItem text={item.text} link={item.link} key={index} classes={item.isHighlighted ? "!text-orange-300" : ""} />
+                <MenuItem text={text} link={item.link} key={index} classes={item.isHighlighted ? "!text-orange-300" : ""} />
               )
-            )}
-            <li className="relative group bg-[#A14028] text-white cursor-pointer first-of-type:rounded-l-full py-2 px-3 first-of-type:pl-7 last-of-type:rounded-r-full last-of-type:mr-6 lg:px-1 xl:px-3 2xl:px-5">
+            })}
+            <li className="relative group bg-[#A14028] text-white cursor-pointer first-of-type:rounded-l-full py-2 px-3 last-of-type:rounded-r-full last-of-type:mr-6 lg:px-1 xl:px-3 2xl:px-5">
               <LanguageSelector />    
             </li>
           </ul>
@@ -162,7 +166,7 @@ const Nav = () => {
                         }}
                         className="text-center text-white opacity-75 py-2 hover:opacity-100 transition cursor-pointer"
                       >
-                        {item.text}
+                        {item[`text${getLanguageKeyEnding(lang) as string}` as keyof typeof item]}
                       </button>
                       {/* <Link
                         to={{lang} + item.link}
@@ -174,7 +178,7 @@ const Nav = () => {
                     </li>
                   ) : (
                     <DropdownItem
-                      text={item.text}
+                      text={item[`text${getLanguageKeyEnding(lang) as string}` as keyof typeof item]}
                       link={item.link}
                       key={index}
                       classes={item.isHighlighted ? "bg-orange-300 rounded-full !text-white px-4 py-2" : ""}
@@ -183,12 +187,12 @@ const Nav = () => {
                   )
                 )}
               </ul>
-              <div className="absolute top-7 right-7">
-                <LanguageSelector />
-              </div>
             </motion.div>
           )}
         </AnimatePresence>
+        <div className="absolute top-7 right-[70px] lg:hidden">
+          <LanguageSelector />
+        </div>
       </div>
     </nav>
   );

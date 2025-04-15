@@ -7,7 +7,9 @@ import banner2560 from '../assets/img/stage-2560.webp';
 import banner480 from '../assets/img/stage-480.webp';
 import banner768 from '../assets/img/stage-768.webp';
 import { useLanguage } from '../context/LanguageContext';
+import { PageTexts } from '../data/page-texts-data';
 import scrollToId from '../helpers/scrollToId';
+import { getLocalizedField } from '../i18n/utils';
 
 const Banner = () => {
   const location = useLocation();
@@ -29,6 +31,12 @@ const Banner = () => {
       setTimeout(() => scrollToId(targetId), 200);
     }
   };
+
+  const bannerBandName = getLocalizedField(PageTexts, 'bannerBandName', lang);
+  const bannerProjectTitle = getLocalizedField(PageTexts, 'bannerProjectTitle', lang);
+  const bannerSmallText = getLocalizedField(PageTexts, 'bannerSmallText', lang);
+  const bannerBtn1Text = getLocalizedField(PageTexts, 'bannerBtn1Text', lang);
+  const bannerBtn2Text = getLocalizedField(PageTexts, 'bannerBtn2Text', lang);
   
   return (
     <div id="banner" className="relative h-[88vh] max-h-[400px] md:max-h-[700px] lg:max-h-[1000px] 2xl:max-h-[90vh] w-full overflow-hidden">
@@ -50,27 +58,27 @@ const Banner = () => {
 
         <div className="z-20 relative flex flex-col items-center justify-center text-center text-white h-full px-4">
           <div className="bg-white/5 px-5 sm:px-7 py-5 md:px-10 md:py-7 lg:px-24 lg:py-10 backdrop-blur-md rounded-[30px]">
-            <p className="text-xl md:text-4xl font-title mb-3">Hammerschmidt Consort</p>
-            <p className="text-4xl md:text-6xl font-title drop-shadow-lg text-orange-300">A bizalom ösvénye</p>
-            <p className="text-lg md:text-2xl mt-3 font-title drop-shadow-lg">A 17. század egy elfeledett mestere: Andreas&nbsp;Hammerschmidt</p>
+            <p className="text-xl md:text-4xl font-title mb-3">{ bannerBandName }</p>
+            <p className="text-4xl md:text-6xl font-title drop-shadow-lg text-orange-300">{ bannerProjectTitle }</p>
+            <p className="text-lg md:text-2xl mt-3 font-title drop-shadow-lg">{ bannerSmallText }</p>
             <div className="mt-6 flex gap-4 flex-wrap justify-center">
               <button
                 type="button"
                 className="px-6 py-2 rounded-full bg-[#A14028] shadow text-white font-bold hover:bg-[#832f1c] transition duration-200 cursor-pointer"
                 onClick={() => {
-                  handleScrollOrNavigate("#concerts".slice(1));
+                  handleScrollOrNavigate(PageTexts.bannerBtn1Url.slice(1));
                 }}
               >
-                Helyszínek
+                { bannerBtn1Text }
               </button>
               <button
                 type="button"
                 className="px-6 py-2 rounded-full border-2 border-[#A14028] shadow text-[#A14028] font-bold bg-[#E4BF87] hover:brightness-110 transition duration-200"
                 onClick={() => {
-                  handleScrollOrNavigate("#musicians".slice(1));
+                  handleScrollOrNavigate(PageTexts.bannerBtn2Url.slice(1));
                 }}
               >
-                Művészek
+                { bannerBtn2Text }
               </button>
               {/* <LangLink to="#concerts" className="px-6 py-2 rounded-full bg-[#A14028] shadow text-white font-bold hover:bg-[#832f1c] transition duration-200">
                 Helyszínek

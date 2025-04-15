@@ -7,7 +7,7 @@ const DropdownItem = (
     classes,
     handleClick
   }: {
-    text: string, 
+    text: string | boolean | undefined, 
     link: string, 
     classes: string
     handleClick: MouseEventHandler<HTMLLIElement>;

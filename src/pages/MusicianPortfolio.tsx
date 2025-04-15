@@ -13,7 +13,9 @@ import Hr from '../components/Hr';
 import MusicianNavigationWidget, {
     MusicianNavigationWidgetDataT
 } from '../components/MusicianNavigationWidget';
+import { useLanguage } from '../context/LanguageContext';
 import { musiciansData, musiciansDataT } from '../data/musicians-data';
+import { getLocalizedField } from '../i18n/utils';
 import { slugify } from '../utils/slugify';
 
 export const LinkRenderer: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href, children, ...props }) => {
@@ -30,25 +32,29 @@ const MusicianPortfolio = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [musiciansNavigationWidgetsData, setMusiciansNavigationWidgetsData] = useState<MusicianNavigationWidgetDataT[]>([]);
 
+  const { lang } = useLanguage();
+
   // Ensure the page loads at the top immediately without smooth scrolling
   useEffect(() => {
     const data: MusicianNavigationWidgetDataT[] = [];
 
     musiciansData.map((person: musiciansDataT) => {
-      if (musiciansNavigationWidgetsData.find((mus: MusicianNavigationWidgetDataT) => mus.name === person.name) || slugify(person.name) === name) {
+      const nameVal = getLocalizedField(person, 'name', lang);
+      
+      if ( musiciansNavigationWidgetsData.find((mus: MusicianNavigationWidgetDataT) => mus.name === nameVal) || slugify(nameVal) === name) {
         return;
-      }
+      }   
+
+      // TODO: Somehow the current user will be added to the nav vidget again, like name-lastname + lastname-name... ?  
 
       data.push({
-        name: person.name,
+        name: nameVal,
         imgUrl: person.imgUrl,
-        portfolioUrl: `/portfolio/${slugify(person.name)}`
+        portfolioUrl: `/portfolio/${slugify(nameVal)}`
       })
 
     })
     setMusiciansNavigationWidgetsData(data);
-
-    // console.log(musiciansNavigationWidgetsData)
 
     window.scrollTo(0, 0);
     if ("scrollRestoration" in history) {
@@ -85,17 +91,20 @@ const MusicianPortfolio = () => {
     return () => observer.disconnect();
   }, []);
 
-  const musician = musiciansData.find((m) => slugify(m.name) === name);
+  const musician = musiciansData.find((m) => slugify(m.nameHu) === name || slugify(m.nameDe) === name  || slugify(m.nameEn) === name);
   
   if (!musician) {
     return <h2 className="text-center text-white font-bold mt-15">Musician not found</h2>;
   }
 
+  const nameVal = getLocalizedField(musician, 'name', lang);
+  const bio = getLocalizedField(musician, 'bio', lang);
+
   return (
     <>
       <Helmet>
-        <title>{musician.name} portfólió oldala</title>
-        <meta name="description" content={`${musician.name} portfólió oldala`} />
+        <title>{nameVal} portfólió oldala</title>
+        <meta name="description" content={`${nameVal} portfólió oldala`} />
         <link rel="canonical" href="https://hammerschmidt-consort.com/" />
       </Helmet>
       <div className="min-h-[400px] text-white flex justify-center px-3 pt-7 md:p-6 mb-10 pb-5 relative">
@@ -110,7 +119,7 @@ const MusicianPortfolio = () => {
             {musician.showAsCard === undefined &&
               <img
                 src={musician.imgUrl}
-                alt={musician.name}
+                alt={nameVal}
                 className="w-full max-w-sm mx-auto rounded-lg shadow-lg"
               />
             }
@@ -174,7 +183,7 @@ const MusicianPortfolio = () => {
           {/* Right Side - Bio & Links */}
           <div className="flex-1 min-w-64 overflow-auto">
             <h2 className="font-title text-orange-300 text-center md:text-left text-5xl font-bold mb-1">
-              {musician.name}
+              {nameVal}
             </h2>
 
             <Hr />
@@ -182,7 +191,7 @@ const MusicianPortfolio = () => {
             {/* Markdown Bio */}
             <div className="musician-bio text-white mb-4 hyphens-auto prose prose-invert leading-7 text-center md:text-left">
               <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ a: LinkRenderer}}>
-                {musician.bio.replace(/\$\$/g, "\n\n")}
+                {bio.replace(/\$\$/g, "\n\n")}
               </ReactMarkdown>
             </div>
             <MusicianNavigationWidget musicians={musiciansNavigationWidgetsData} />
@@ -191,7 +200,7 @@ const MusicianPortfolio = () => {
           {/* <Link to={`/#${name}`} className="text-center absolute bottom-3 right-3  block mt-6 opacity-80 hover:opacity-100 text-orange-300 hover:text-orange-400 transition-all ease-in-out duration-300 scale-y-[-1]">
             <ArrowGoBackIcon h="25" w="25"/>
           </Link> */}
-          <BackLink target={`/#${name}`} />
+          <BackLink target={`/#${nameVal}`} />
         </div>
       </div>
     </>

@@ -2,9 +2,23 @@ import { Link } from 'react-router-dom';
 
 import FacebookIcon from '../assets/svg/facebook-icon';
 import GithubIcon from '../assets/svg/github-icon';
+import { useLanguage } from '../context/LanguageContext';
+import { FooterMenu, PageTexts } from '../data/page-texts-data';
+import { getLocalizedField } from '../i18n/utils';
 import LangLink from './LangLink';
 
 const Footer = () => {
+
+  const { lang } = useLanguage();
+
+  const impressum = getLocalizedField(FooterMenu, 'impressum', lang);
+  const privacyPolicy = getLocalizedField(FooterMenu, 'privacyPolicy', lang);
+  const posters = getLocalizedField(FooterMenu, 'posters', lang);
+  const copyright = getLocalizedField(PageTexts, 'copyright', lang);
+  const designer = getLocalizedField(PageTexts, 'designer', lang);
+  const bannerBandName = getLocalizedField(PageTexts, 'bannerBandName', lang);
+  const years = PageTexts.years;
+
   return (
     <footer className="bg-[#0001] text-gray-300 py-8">
       <div className="max-w-6xl mx-auto px-6">
@@ -19,15 +33,15 @@ const Footer = () => {
             </Link>
           </div>
           <p className="mt-4 text-md">
-            <LangLink className="text-orange-300 opacity-80 hover:opacity-100 transition-all duration-300 ease-in-out" to="/impresszum">Impresszum</LangLink>
+            <LangLink className="text-orange-300 opacity-80 hover:opacity-100 transition-all duration-300 ease-in-out" to="/impresszum">{ impressum }</LangLink>
             <span className="inline-block mx-3">|</span>
-            <LangLink className="text-orange-300 opacity-80 hover:opacity-100 transition-all duration-300 ease-in-out" to="/adatvedelmi-nyilatkozat">Adatvédelem</LangLink>
+            <LangLink className="text-orange-300 opacity-80 hover:opacity-100 transition-all duration-300 ease-in-out" to="/adatvedelmi-nyilatkozat">{ privacyPolicy }</LangLink>
             <span className="inline-block mx-3">|</span>
-            <LangLink className="text-orange-300 opacity-80 hover:opacity-100 transition-all duration-300 ease-in-out" to="/plakatok">Plakátok</LangLink>
+            <LangLink className="text-orange-300 opacity-80 hover:opacity-100 transition-all duration-300 ease-in-out" to="/plakatok">{ posters }</LangLink>
           </p>
-          <p className="mt-4 text-xs">© 2025 Hammerschmidt</p>
-          <p className="mt-1 text-xs">Minden jog fenntartva.</p>
-          <p className="mt-1 text-xs">Design: <a className="text-orange-300" href="https://gaborjuhasz.de" target="_blank">Juhász Gábor</a></p>
+          <p className="mt-4 text-xs">© {`${years} ${bannerBandName}` }</p>
+          <p className="mt-1 text-xs">{ copyright }</p>
+          <p className="mt-1 text-xs">Design: <a className="text-orange-300" href="https://gaborjuhasz.de" target="_blank">{ designer }</a></p>
         </div>
       </div>
     </footer>
