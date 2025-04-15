@@ -1,7 +1,16 @@
 import ChurchIcon from '../assets/svg/church-icon';
-import { eventsDataT } from '../data/events-data';
 
-const EventItem = ({ city, address, place, date, time, infoText, mapsLink }: eventsDataT) => {
+const EventItem = ({ city, address, place, date, time, infoText, mapsLink }:
+  {
+    city: string;
+    address: string;
+    place: string;
+    date: string;
+    time: string;
+    infoText: string;
+    mapsLink: string;
+  }
+) => {
   return (
     <div className="w-full max-w-lg mx-auto bg-[#ddd] shadow-lg rounded-2xl overflow-hidden transform transition duration-300 hover:scale-105 flex flex-col">
       
