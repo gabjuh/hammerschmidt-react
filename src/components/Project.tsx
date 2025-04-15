@@ -73,11 +73,11 @@ const Project = () => {
             />
           </div>
 
-          <p className="font-content-extralight sm:text-base leading-6 mt-12 lg:mt-0">
+          <div className="font-content-extralight sm:text-base leading-6 mt-12 lg:mt-0">
             <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ a: LinkRenderer}}>
               { hammerschmidt?.shortBio.replace(/\$\$/g, "\n\n") }
             </ReactMarkdown>
-          </p>
+          </div>
 
           <Link
             to="/koncertprogram"

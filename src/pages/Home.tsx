@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 
 import Banner from '../components/Banner';
 import Concerts from '../components/Concerts';
+import MediaSlider from '../components/MediaSlider';
 // import ContactForm from '../components/ContactForm';
 import Musicians from '../components/Musicians';
 import Project from '../components/Project';
@@ -22,6 +23,7 @@ const Home = () => {
       <Banner />
       <Project />
       <Musicians />
+      <MediaSlider />
       <Concerts />
       {/* <ContactForm />    */}
     </>
