@@ -3,43 +3,48 @@ import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 import rehypeRaw from 'rehype-raw';
 
-import hammerschmidtVideo from '../assets/hammerschmidt.webm';
 import { musiciansData, musiciansDataT } from '../data/musicians-data';
 import { LinkRenderer } from '../pages/MusicianPortfolio';
 
 const Project = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const containerRefMobile = useRef<HTMLDivElement | null>(null);
+  const containerRefDesktop = useRef<HTMLDivElement | null>(null);
+  const videoRefMobile = useRef<HTMLVideoElement | null>(null);
+  const videoRefDesktop = useRef<HTMLVideoElement | null>(null);
 
   const hammerschmidt: musiciansDataT | undefined = musiciansData.find((person) => person.showAsCard === false);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const createObserver = (container: HTMLDivElement | null, video: HTMLVideoElement | null) => {
+      if (!container || !video) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        if (entry.intersectionRatio === 1) {
-          // Teljesen látható → lejátszás
-          video.currentTime = 0;
-          video.play();
-        } else {
-          // Nem teljesen látható → megáll és visszaugrik
-          video.pause();
-          video.currentTime = 0;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.intersectionRatio === 1) {
+            video.currentTime = 0;
+            video.play();
+          } else {
+            video.pause();
+            video.currentTime = 0;
+          }
+        },
+        {
+          threshold: 1.0,
         }
-      },
-      {
-        threshold: 1.0, // Csak akkor játsszon, ha teljesen a képernyőn van
-      }
-    );
+      );
 
-    observer.observe(container);
+      observer.observe(container);
 
-    return () => observer.disconnect();
+      return () => observer.disconnect();
+    };
+
+    const cleanupMobile = createObserver(containerRefMobile.current, videoRefMobile.current);
+    const cleanupDesktop = createObserver(containerRefDesktop.current, videoRefDesktop.current);
+
+    return () => {
+      cleanupMobile?.();
+      cleanupDesktop?.();
+    };
   }, []);
 
   return (
@@ -58,22 +63,26 @@ const Project = () => {
             „Zittaui Orfeusz, kinek hangjai Isten trónja előtt zengenek tovább.”
           </h3>
 
-          {/* Video Block - Desktop */}
+          {/* Video Block - Mobile */}
           <div
-            ref={containerRef}
-            className="w-full lg:w-1/2 flex lg:hidden justify-center mb-8 md:mb-0 mt-10 lg:mt-0"
+            ref={containerRefMobile}
+            className="w-full lg:w-1/2 flex lg:hidden justify-center mb-5 md:mb-0 mt-10 lg:mt-0"
           >
             <video
-              ref={videoRef}
+              ref={videoRefMobile}
               className="w-full max-w-[400px] md:max-w-[450px] rounded-xl shadow-lg"
-              src={hammerschmidtVideo}
               muted
               loop={true}
               playsInline
-            />
+              src="/hammerschmidt.webm"
+            >
+              <source src="/hammerschmidt.webm" type="video/webm" />
+              <source src="/hammerschmidt.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
 
-          <div className="font-content-extralight sm:text-base leading-6 mt-12 lg:mt-0">
+          <div className="font-content-extralight sm:text-base leading-6 mt-10 lg:mt-0">
             <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ a: LinkRenderer}}>
               { hammerschmidt?.shortBio.replace(/\$\$/g, "\n\n") }
             </ReactMarkdown>
@@ -95,17 +104,21 @@ const Project = () => {
 
         {/* Video Block - Desktop */}
         <div
-          ref={containerRef}
+          ref={containerRefDesktop}
           className="w-full lg:w-1/2 hidden lg:flex justify-center mb-8 md:mb-0 mt-10 lg:mt-0"
         >
           <video
-            ref={videoRef}
+            ref={videoRefDesktop}
             className="w-full max-w-[400px] md:max-w-[450px] rounded-xl shadow-lg"
-            src={hammerschmidtVideo}
             muted
             loop={true}
             playsInline
-          />
+            src="/hammerschmidt.webm"
+          >
+            <source src="/hammerschmidt.webm" type="video/webm" />
+            <source src="/hammerschmidt.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </div>

@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
 import rehypeRaw from 'rehype-raw';
 
-import hammerschmidtVideo from '../assets/hammerschmidt.webm';
 import FacebookIcon from '../assets/svg/facebook-icon';
 import WebsiteIcon from '../assets/svg/website-icon';
 import YoutubeIcon from '../assets/svg/youtube-icon';
@@ -122,7 +121,7 @@ const MusicianPortfolio = () => {
                 <video
                   ref={videoRef}
                   className="w-full rounded-xl shadow-lg"
-                  src={hammerschmidtVideo}
+                  src="/hammerschmidt.webm"
                   muted
                   loop={true}
                   playsInline
