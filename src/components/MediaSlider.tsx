@@ -58,7 +58,7 @@ const MediaSlider: React.FC = () => {
       <h2 className="text-center text-4xl font-bold mb-10 text-orange-300 font-title">Képek</h2>
       <div id="slider" className="w-full max-w-5xl mx-auto cursor-pointer">
         <div
-          className="relative aspect-video overflow-hidden rounded-md"
+          className="relative aspect-video overflow-hidden rounded-md mx-2 md:mx-4 xl:mx-0"
           onMouseEnter={() => swiperRef.current?.autoplay.stop()}
           onMouseLeave={() => {
             if (!fullScreen) swiperRef.current?.autoplay.start()
