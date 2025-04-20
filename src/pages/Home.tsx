@@ -6,6 +6,8 @@ import MediaSlider from '../components/MediaSlider';
 // import ContactForm from '../components/ContactForm';
 import Musicians from '../components/Musicians';
 import Project from '../components/Project';
+import SupportUs from '../components/SupportUs';
+import YouTubeEmbed from '../components/YouTubeEmbed';
 
 const Home = () => {
   return (
@@ -21,10 +23,12 @@ const Home = () => {
         <meta property="og:type" content="website" />
       </Helmet>
       <Banner />
+      <YouTubeEmbed videoId="GGKubVRq5Og" title="Promo Video" />
       <Project />
       <Musicians />
       <MediaSlider />
       <Concerts />
+      <SupportUs />
       {/* <ContactForm />    */}
     </>
   )

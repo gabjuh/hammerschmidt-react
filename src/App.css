@@ -256,3 +256,12 @@ strong {
   background-color: #fff!important; /* active dot color */
   opacity: 1;
 }
+
+.support-us-important > p {
+  @apply text-3xl mb-4;
+  font-family: 'Viaoda Libre', cursive;
+}
+
+.support-us-important li {
+  @apply list-disc pl-2 ml-8 mb-3;
+}

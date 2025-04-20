@@ -55,7 +55,7 @@ const Project = () => {
       <div className="w-full bg-[#fff1] px-3 pt-10 md:p-8 rounded-lg items-center shadow-lg flex flex-wrap lg:flex-nowrap lg:gap-6 relative">
         {/* Text Block */}
         <div id="project-markdown-text" className="w-full lg:w-1/2 text-center lg:text-right">
-          {/* <p className="text-2xl font-title">A szerző</p> */}
+          <p className="text-2xl font-title">A szerző</p>
           <h2 className="font-title text-[2.4rem] leading-8.5 md:leading-10 sm:text-5xl my-5 text-orange-300 drop-shadow-lg">
             { hammerschmidt?.name }
           </h2>
