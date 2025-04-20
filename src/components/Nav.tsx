@@ -89,7 +89,8 @@ const Nav = () => {
                 </li>
               ) : (
                 // Use 'Link' for internal navigation
-                <MenuItem text={item.text} link={item.link} key={index} classes={item.isHighlighted ? "!text-orange-300" : ""} />
+                <MenuItem text={item.text} link={item.link} key={index} classes="" />
+                // classes={item.isHighlighted ? "!text-orange-300" : ""}
               )
             )}
           </ul>
@@ -132,7 +133,8 @@ const Nav = () => {
                       text={item.text}
                       link={item.link}
                       key={index}
-                      classes={item.isHighlighted ? "bg-orange-300 rounded-full !text-white px-4 py-2" : ""}
+                      classes=""
+                      // classes={item.isHighlighted ? "bg-orange-300 rounded-full !text-white px-4 py-2" : ""}
                       handleClick={handleMenuClick}
                     />
                   )

@@ -14,7 +14,7 @@ const DropdownItem = (
   }
 ) => {
   return (
-    <li className={`text-orange-300 py-2 px-7 my-3 ${classes}`} onClick={handleClick}>
+    <li className={`text-white hover:text-orange-300 transition-all duration-150 ease-in-out py-2 px-7 my-3 ${classes}`} onClick={handleClick}>
       <a href={link} className="scroll-trigger" data-scroll-target="top">{text}</a>
     </li>
   )
